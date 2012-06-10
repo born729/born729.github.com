@@ -9,7 +9,8 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="大部分书上介绍rails的第一条命令是： rails new project 这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践： 集成Capistrano Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano， &hellip;">
+  <meta name="description" content="大部分书上介绍rails的第一条命令是： 1
+rails new project 这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践： 集成Capistrano Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -57,6 +58,8 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/apppp">Apppp.info</a></li>
+  <li><a href="/51beidanci">51beidanci.com</a></li>
 </ul>
 
 </nav>
@@ -90,40 +93,53 @@
   </header>
 
 
-<div class="entry-content"><p>大部分书上介绍rails的第一条命令是：
-<code>
-rails new project
-</code>
-这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
+<div class="entry-content"><p>大部分书上介绍rails的第一条命令是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails new project</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
 
 <h3>集成Capistrano</h3>
 
-<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：
-<code>
-capify .
-</code>
-生产的deploy.rb，我们要做一些配置.</p>
+<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>capify .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>生产的deploy.rb，我们要做一些配置.</p>
 
 <h3>application.rb</h3>
 
-<p>这个文件中，有一些全局的应用程序设置，很多情况下需要修改的是时区，默认为UTC
-<code>
-config.time_zone = 'Beijing'
-</code></p>
+<p>这个文件中，有一些全局的应用程序设置，很多情况下需要修改的是时区，默认为UTC</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>config.time_zone = 'Beijing'</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>database.yml</h3>
 
-<p>配置数据库，大部分情况下，我们喜欢postgresql，所以：
-<code>
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: name
-  pool: 5
-  username: user
-  password: pass
-</code>
-上面是设置的生产环境，开发环境我们有时会直接使用sqlite，sqlite和postgresql的兼容性很好，当然有时也会直接使用postgresql，那么就同时需要修改配置文件中的development段落的相关设置。</p>
+<p>配置数据库，大部分情况下，我们喜欢postgresql，所以：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>production:
+</span><span class='line'>  adapter: postgresql
+</span><span class='line'>  encoding: unicode
+</span><span class='line'>  database: name
+</span><span class='line'>  pool: 5
+</span><span class='line'>  username: user
+</span><span class='line'>  password: pass</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面是设置的生产环境，开发环境我们有时会直接使用sqlite，sqlite和postgresql的兼容性很好，当然有时也会直接使用postgresql，那么就同时需要修改配置文件中的development段落的相关设置。</p>
 </div>
 
 

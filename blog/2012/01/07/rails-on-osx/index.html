@@ -57,6 +57,8 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/apppp">Apppp.info</a></li>
+  <li><a href="/51beidanci">51beidanci.com</a></li>
 </ul>
 
 </nav>
@@ -96,15 +98,15 @@
 
 <p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
 
-<p><code>
-bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
+
 
 <p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
 
-<p><code>
-echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
 
 <p>别忘了重新登录，以生效上面的profile。</p>
 
@@ -112,23 +114,23 @@ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # 
 
 <p>有了rvm，可以很方便的安装ruby了，如下：</p>
 
-<p><code>
-rvm install 1.9.2
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.2</span></code></pre></td></tr></table></div></figure>
+
 
 <p>将1.9.2设置为缺省的ruby：</p>
 
-<p><code>
-rvm use 1.9.2 --default
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.2 --default</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Rails</h3>
 
 <p>有了ruby和gem，就可以安装rails了，理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多，所以：</p>
 
-<p><code>
-socksify_ruby localhost 8888 `which gem` install rails
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
+
 
 <p>注，上面的引号是反引号，不是单引号，localhost 8888 你也应该懂的。</p>
 
@@ -136,15 +138,17 @@ socksify_ruby localhost 8888 `which gem` install rails
 
 <p>本来装好了rails，就可以开工了，不过在OSX 10.5下，下面这个特殊的步骤需要先做一下，以解决sqlite版本过老的问题，先安装homebrew这个极好的OSX包管理器：</p>
 
-<p><code>
-/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"</span></code></pre></td></tr></table></div></figure>
+
 
 <p>然后刷新sqlite</p>
 
-<p><code>
-brew install sqlite
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install sqlite</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
 
 

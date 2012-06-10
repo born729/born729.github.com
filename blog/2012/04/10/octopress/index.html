@@ -9,7 +9,11 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Octopress是非常方便的静态博客程序，尤其适合github。 安装 git clone git://github.com/imathis/octopress.git octopress
+  <meta name="description" content="Octopress是非常方便的静态博客程序，尤其适合github。 安装 1
+2
+3
+4
+git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 bundle install
 rake install &hellip;">
@@ -60,6 +64,8 @@ rake install &hellip;">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/apppp">Apppp.info</a></li>
+  <li><a href="/51beidanci">51beidanci.com</a></li>
 </ul>
 
 </nav>
@@ -97,39 +103,53 @@ rake install &hellip;">
 
 <h3>安装</h3>
 
-<p><code>
-git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-</code>
-这就把Octopress装好了，上面的目录名octopress可以任意更改，接下来就需要设置github绑定了：
-<code>
-rake setup_github_pages
-</code>
-上面的命令会有提示输入git路径，注意要输入git的全路径，比如git@github.com:xxx/yyy.git</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这就把Octopress装好了，上面的目录名octopress可以任意更改，接下来就需要设置github绑定了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的命令会有提示输入git路径，注意要输入git的全路径，比如git@github.com:xxx/yyy.git</p>
 
 <h3>使用</h3>
 
-<p>新增博客帖子很简单，可以使用命令：
-<code>
-rake new_post["title"]
-</code>
-当然也可以在source/_posts目录下手动添加博客，要编译生成静态页面，并上传到github</p>
+<p>新增博客帖子很简单，可以使用命令：</p>
 
-<p><code>
-rake generate
-rake preview
-rake deploy
-</code>
-如果你的ruby gem比较复杂，则需要在命令前使用bundle exec。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
 
-<p>如果要上传源文件：
-<code>
-git add .
-git commit -m "source commit"
-git push origin source
-</code></p>
+
+<p>当然也可以在source/_posts目录下手动添加博客，要编译生成静态页面，并上传到github</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你的ruby gem比较复杂，则需要在命令前使用bundle exec。</p>
+
+<p>如果要上传源文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m "source commit"
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 

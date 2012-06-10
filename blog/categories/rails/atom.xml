@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-06-10T10:44:15+08:00</updated>
+  <updated>2012-06-10T11:14:37+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -26,8 +26,9 @@ rails new project
 
 <h3>集成Capistrano</h3>
 
-<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：
-<code>
+<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：</p>
+
+<p><code>
 capify .
 </code>
 生产的deploy.rb，我们要做一些配置.</p>
