@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2012-06-10T10:44:15+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails向导]]></title>
+    <link href="http://born729.github.com/blog/2012/05/27/rails-bootup/"/>
+    <updated>2012-05-27T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/05/27/rails-bootup</id>
+    <content type="html"><![CDATA[<p>大部分书上介绍rails的第一条命令是：
+<code>
+rails new project
+</code>
+这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
+
+<h3>集成Capistrano</h3>
+
+<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：
+<code>
+capify .
+</code>
+生产的deploy.rb，我们要做一些配置.</p>
+
+<h3>application.rb</h3>
+
+<p>这个文件中，有一些全局的应用程序设置，很多情况下需要修改的是时区，默认为UTC
+<code>
+config.time_zone = 'Beijing'
+</code></p>
+
+<h3>database.yml</h3>
+
+<p>配置数据库，大部分情况下，我们喜欢postgresql，所以：
+<code>
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: name
+  pool: 5
+  username: user
+  password: pass
+</code>
+上面是设置的生产环境，开发环境我们有时会直接使用sqlite，sqlite和postgresql的兼容性很好，当然有时也会直接使用postgresql，那么就同时需要修改配置文件中的development段落的相关设置。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OSX下的Rails环境]]></title>
+    <link href="http://born729.github.com/blog/2012/01/07/rails-on-osx/"/>
+    <updated>2012-01-07T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/01/07/rails-on-osx</id>
+    <content type="html"><![CDATA[<p>手头的OSX 10.5，整理了安装Rails的方法，记录在这里：</p>
+
+<h3>RVM</h3>
+
+<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+
+<p><code>
+bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></p>
+
+<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
+
+<p><code>
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+</code></p>
+
+<p>别忘了重新登录，以生效上面的profile。</p>
+
+<h3>Ruby</h3>
+
+<p>有了rvm，可以很方便的安装ruby了，如下：</p>
+
+<p><code>
+rvm install 1.9.2
+</code></p>
+
+<p>将1.9.2设置为缺省的ruby：</p>
+
+<p><code>
+rvm use 1.9.2 --default
+</code></p>
+
+<h3>Rails</h3>
+
+<p>有了ruby和gem，就可以安装rails了，理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多，所以：</p>
+
+<p><code>
+socksify_ruby localhost 8888 `which gem` install rails
+</code></p>
+
+<p>注，上面的引号是反引号，不是单引号，localhost 8888 你也应该懂的。</p>
+
+<h3>Sqlite3</h3>
+
+<p>本来装好了rails，就可以开工了，不过在OSX 10.5下，下面这个特殊的步骤需要先做一下，以解决sqlite版本过老的问题，先安装homebrew这个极好的OSX包管理器：</p>
+
+<p><code>
+/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+</code></p>
+
+<p>然后刷新sqlite</p>
+
+<p><code>
+brew install sqlite
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

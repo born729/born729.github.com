@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails在VPS的部署 - Born729</title>
+  <meta name="author" content="born729">
+
+  
+  <meta name="description" content="这是我们在VPS的部署方案。 需求 VPS安装Ubuntu 11.04
+RVM安装ruby和rails
+Nginx和Passenger模块
+PostgreSQL VPS 我们使用Ubuntu11.04，设置好ssh Ruby和Rails ruby要用1.9.3以上版本，因为1.9. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://born729.github.com/blog/2012/04/28/rails-host-vps/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Born729" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Born729</a></h1>
+  
+    <h2>Change Our Life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:born729.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails在VPS的部署</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>这是我们在VPS的部署方案。</p>
+
+<h3>需求</h3>
+
+<ul>
+<li>VPS安装Ubuntu 11.04</li>
+<li>RVM安装ruby和rails</li>
+<li>Nginx和Passenger模块</li>
+<li>PostgreSQL</li>
+</ul>
+
+
+<h3>VPS</h3>
+
+<ul>
+<li>我们使用Ubuntu11.04，设置好ssh</li>
+</ul>
+
+
+<h3>Ruby和Rails</h3>
+
+<p>ruby要用1.9.3以上版本，因为1.9.3版本解决了一个性能问题，Rails用3.1以上版本，因为在之前的版本会有assets方面的兼容性问题。</p>
+
+<h3>Nginx</h3>
+
+<p><code>
+gem install passenger
+sudo apt-get install libcurl4-openssl-dev
+rvmsudo passenger-install-nginx-module
+</code></p>
+
+<p>安装nginx启动脚本
+<code>
+wget http://www.smashingmagazine.com/files/nginx
+sudo mv nginx /etc/init.d/nginx
+sudo chmod +x /etc/init.d/nginx
+sudo /usr/sbin/update-rc.d -f nginx defaults
+</code></p>
+
+<h3>PostgreSQL</h3>
+
+<p>我们偏爱PostgreSQL，除了PostgreSQL成熟以外，还因为PostgreSQL和Sqlite比较接近的SQL语句，这样可以在两者间随意切换。
+<code>
+sudo apt-get install postgresql libpq-dev
+</code></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">born729</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osx/'>osx</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://born729.github.com/blog/2012/04/28/rails-host-vps/" data-via="" data-counturl="http://born729.github.com/blog/2012/04/28/rails-host-vps/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/10/octopress/" title="Previous Post: Octopress">&laquo; Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/22/remote-textmate/" title="Next Post: 远程执行textmate">远程执行textmate &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/27/rails-bootup/">Rails向导</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/28/rails-host-vps/">Rails在VPS的部署</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/10/octopress/">Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/07/rails-on-osx/">OSX下的Rails环境</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - born729 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'born729';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://born729.github.com/blog/2012/04/28/rails-host-vps/';
+        var disqus_url = 'http://born729.github.com/blog/2012/04/28/rails-host-vps/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

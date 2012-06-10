@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Born729]]></title>
+  <link href="http://born729.github.com/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2012-06-10T10:44:15+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails向导]]></title>
+    <link href="http://born729.github.com/blog/2012/05/27/rails-bootup/"/>
+    <updated>2012-05-27T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/05/27/rails-bootup</id>
+    <content type="html"><![CDATA[<p>大部分书上介绍rails的第一条命令是：
+<code>
+rails new project
+</code>
+这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
+
+<h3>集成Capistrano</h3>
+
+<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：
+<code>
+capify .
+</code>
+生产的deploy.rb，我们要做一些配置.</p>
+
+<h3>application.rb</h3>
+
+<p>这个文件中，有一些全局的应用程序设置，很多情况下需要修改的是时区，默认为UTC
+<code>
+config.time_zone = 'Beijing'
+</code></p>
+
+<h3>database.yml</h3>
+
+<p>配置数据库，大部分情况下，我们喜欢postgresql，所以：
+<code>
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: name
+  pool: 5
+  username: user
+  password: pass
+</code>
+上面是设置的生产环境，开发环境我们有时会直接使用sqlite，sqlite和postgresql的兼容性很好，当然有时也会直接使用postgresql，那么就同时需要修改配置文件中的development段落的相关设置。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[远程执行textmate]]></title>
+    <link href="http://born729.github.com/blog/2012/05/22/remote-textmate/"/>
+    <updated>2012-05-22T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/05/22/remote-textmate</id>
+    <content type="html"><![CDATA[<p>textmate用起来很方便，在连上ssh时，自然也希望能够使用textmate，方法很多，列举几个：</p>
+
+<p>＃sftp客户端
+使用支持sftp的客户端，比如Cyberduck，连上ssh之后，配置文本编辑器为textmate，自然就可以直接编辑了，这种方法的好处简单且比较稳定，但是不适合编辑一个目录。</p>
+
+<p>＃sshfs文件系统
+将ssh映射为本地文件系统，可以用[macfuse][http://code.google.com/p/macfuse/]，这种方法可能存在一定的稳定性问题，但允许编辑整个目录。</p>
+
+<p>＃textmate插件
+比如[http://david.olrik.dk/projects/textmate-remote-sync-bundle/]之类的插件，当然只能对textmate有效。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails在VPS的部署]]></title>
+    <link href="http://born729.github.com/blog/2012/04/28/rails-host-vps/"/>
+    <updated>2012-04-28T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/04/28/rails-host-vps</id>
+    <content type="html"><![CDATA[<p>这是我们在VPS的部署方案。</p>
+
+<h3>需求</h3>
+
+<ul>
+<li>VPS安装Ubuntu 11.04</li>
+<li>RVM安装ruby和rails</li>
+<li>Nginx和Passenger模块</li>
+<li>PostgreSQL</li>
+</ul>
+
+
+<h3>VPS</h3>
+
+<ul>
+<li>我们使用Ubuntu11.04，设置好ssh</li>
+</ul>
+
+
+<h3>Ruby和Rails</h3>
+
+<p>ruby要用1.9.3以上版本，因为1.9.3版本解决了一个性能问题，Rails用3.1以上版本，因为在之前的版本会有assets方面的兼容性问题。</p>
+
+<h3>Nginx</h3>
+
+<p><code>
+gem install passenger
+sudo apt-get install libcurl4-openssl-dev
+rvmsudo passenger-install-nginx-module
+</code></p>
+
+<p>安装nginx启动脚本
+<code>
+wget http://www.smashingmagazine.com/files/nginx
+sudo mv nginx /etc/init.d/nginx
+sudo chmod +x /etc/init.d/nginx
+sudo /usr/sbin/update-rc.d -f nginx defaults
+</code></p>
+
+<h3>PostgreSQL</h3>
+
+<p>我们偏爱PostgreSQL，除了PostgreSQL成熟以外，还因为PostgreSQL和Sqlite比较接近的SQL语句，这样可以在两者间随意切换。
+<code>
+sudo apt-get install postgresql libpq-dev
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress]]></title>
+    <link href="http://born729.github.com/blog/2012/04/10/octopress/"/>
+    <updated>2012-04-10T13:01:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/04/10/octopress</id>
+    <content type="html"><![CDATA[<p><a href="http://octopress.org">Octopress</a>是非常方便的静态博客程序，尤其适合github。</p>
+
+<h3>安装</h3>
+
+<p><code>
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+bundle install
+rake install
+</code>
+这就把Octopress装好了，上面的目录名octopress可以任意更改，接下来就需要设置github绑定了：
+<code>
+rake setup_github_pages
+</code>
+上面的命令会有提示输入git路径，注意要输入git的全路径，比如git@github.com:xxx/yyy.git</p>
+
+<h3>使用</h3>
+
+<p>新增博客帖子很简单，可以使用命令：
+<code>
+rake new_post["title"]
+</code>
+当然也可以在source/_posts目录下手动添加博客，要编译生成静态页面，并上传到github</p>
+
+<p><code>
+rake generate
+rake preview
+rake deploy
+</code>
+如果你的ruby gem比较复杂，则需要在命令前使用bundle exec。</p>
+
+<p>如果要上传源文件：
+<code>
+git add .
+git commit -m "source commit"
+git push origin source
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OSX下的Rails环境]]></title>
+    <link href="http://born729.github.com/blog/2012/01/07/rails-on-osx/"/>
+    <updated>2012-01-07T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/01/07/rails-on-osx</id>
+    <content type="html"><![CDATA[<p>手头的OSX 10.5，整理了安装Rails的方法，记录在这里：</p>
+
+<h3>RVM</h3>
+
+<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+
+<p><code>
+bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></p>
+
+<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
+
+<p><code>
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+</code></p>
+
+<p>别忘了重新登录，以生效上面的profile。</p>
+
+<h3>Ruby</h3>
+
+<p>有了rvm，可以很方便的安装ruby了，如下：</p>
+
+<p><code>
+rvm install 1.9.2
+</code></p>
+
+<p>将1.9.2设置为缺省的ruby：</p>
+
+<p><code>
+rvm use 1.9.2 --default
+</code></p>
+
+<h3>Rails</h3>
+
+<p>有了ruby和gem，就可以安装rails了，理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多，所以：</p>
+
+<p><code>
+socksify_ruby localhost 8888 `which gem` install rails
+</code></p>
+
+<p>注，上面的引号是反引号，不是单引号，localhost 8888 你也应该懂的。</p>
+
+<h3>Sqlite3</h3>
+
+<p>本来装好了rails，就可以开工了，不过在OSX 10.5下，下面这个特殊的步骤需要先做一下，以解决sqlite版本过老的问题，先安装homebrew这个极好的OSX包管理器：</p>
+
+<p><code>
+/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+</code></p>
+
+<p>然后刷新sqlite</p>
+
+<p><code>
+brew install sqlite
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git笔记]]></title>
+    <link href="http://born729.github.com/blog/2012/01/05/git-notes/"/>
+    <updated>2012-01-05T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/01/05/git-notes</id>
+    <content type="html"><![CDATA[<p>一图胜千言</p>
+
+<p><img src="http://osteele.com/images/2008/git-transport.png" alt="" /></p>
+
+<h4>获取</h4>
+
+<p><code>
+git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git
+</code></p>
+
+<h4>本地操作</h4>
+
+<p>添加所有修改，包括删除的文件
+<code>
+git add . -A
+</code></p>
+
+<p>查看修改情况
+<code>
+git status
+</code></p>
+
+<p>提交到本地
+<code>
+git commit -m "comment"
+</code></p>
+
+<p>取消，下面两条都可以，暂存区域会取消，&#8211;hard会将修改的文件恢复到上次commit状态。
+<code>
+git reset
+git reset --hard
+</code></p>
+
+<h4>远程服务器</h4>
+
+<h3>其它</h3>
+]]></content>
+  </entry>
+  
+</feed>

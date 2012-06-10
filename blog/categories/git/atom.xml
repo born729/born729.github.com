@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2012-06-10T10:44:15+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git笔记]]></title>
+    <link href="http://born729.github.com/blog/2012/01/05/git-notes/"/>
+    <updated>2012-01-05T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/01/05/git-notes</id>
+    <content type="html"><![CDATA[<p>一图胜千言</p>
+
+<p><img src="http://osteele.com/images/2008/git-transport.png" alt="" /></p>
+
+<h4>获取</h4>
+
+<p><code>
+git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git
+</code></p>
+
+<h4>本地操作</h4>
+
+<p>添加所有修改，包括删除的文件
+<code>
+git add . -A
+</code></p>
+
+<p>查看修改情况
+<code>
+git status
+</code></p>
+
+<p>提交到本地
+<code>
+git commit -m "comment"
+</code></p>
+
+<p>取消，下面两条都可以，暂存区域会取消，--hard会将修改的文件恢复到上次commit状态。
+<code>
+git reset
+git reset --hard
+</code></p>
+
+<h4>远程服务器</h4>
+
+<h3>其它</h3>
+]]></content>
+  </entry>
+  
+</feed>

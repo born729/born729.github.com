@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://born729.github.com/blog/2012/01/05/git-notes/</loc>
+        <lastmod>2012-06-10T10:37:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/2012/01/07/rails-on-osx/</loc>
+        <lastmod>2012-06-10T10:37:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/2012/04/10/octopress/</loc>
+        <lastmod>2012-06-10T10:37:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/2012/04/28/rails-host-vps/</loc>
+        <lastmod>2012-06-10T10:37:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/2012/05/22/remote-textmate/</loc>
+        <lastmod>2012-06-10T10:37:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/2012/05/27/rails-bootup/</loc>
+        <lastmod>2012-06-10T10:44:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/blog/archives/</loc>
+        <lastmod>2012-06-10T10:44:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/</loc>
+        <lastmod>2012-06-10T10:44:01+08:00</lastmod>
+    </url>
+</urlset>
