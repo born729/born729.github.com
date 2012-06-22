@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-06-10T11:17:27+08:00</updated>
+  <updated>2012-06-22T08:05:39+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -18,13 +18,39 @@
     <link href="http://born729.github.com/blog/2012/05/27/rails-bootup/"/>
     <updated>2012-05-27T00:00:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/05/27/rails-bootup</id>
-    <content type="html"><![CDATA[<p>大部分书上介绍rails的第一条命令是：</p>
+    <content type="html"><![CDATA[<h3>RVM</h3>
+
+<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>别忘了重新登录，以生效上面的profile。</p>
+
+<h3>Ruby和Rails</h3>
+
+<p>有了rvm，可以很方便的安装ruby了，如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.3
+</span><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
+
+
+<p>理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多.</p>
+
+<p>大部分书上介绍rails的第一条命令是：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rails new project</span></code></pre></td></tr></table></div></figure>
 
-
-<p>这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
 
 <h3>集成Capistrano</h3>
 
@@ -209,64 +235,14 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[OSX下的Rails环境]]></title>
+    <title type="html"><![CDATA[Rails cheat sheet]]></title>
     <link href="http://born729.github.com/blog/2012/01/07/rails-on-osx/"/>
     <updated>2012-01-07T00:00:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/01/07/rails-on-osx</id>
-    <content type="html"><![CDATA[<p>手头的OSX 10.5，整理了安装Rails的方法，记录在这里：</p>
-
-<h3>RVM</h3>
-
-<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+    <content type="html"><![CDATA[<h4>执行sql update语句</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
-
-
-<p>别忘了重新登录，以生效上面的profile。</p>
-
-<h3>Ruby</h3>
-
-<p>有了rvm，可以很方便的安装ruby了，如下：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>将1.9.2设置为缺省的ruby：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.2 --default</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Rails</h3>
-
-<p>有了ruby和gem，就可以安装rails了，理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多，所以：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注，上面的引号是反引号，不是单引号，localhost 8888 你也应该懂的。</p>
-
-<h3>Sqlite3</h3>
-
-<p>本来装好了rails，就可以开工了，不过在OSX 10.5下，下面这个特殊的步骤需要先做一下，以解决sqlite版本过老的问题，先安装homebrew这个极好的OSX包管理器：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后刷新sqlite</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install sqlite</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ActiveRecord::Base.connection.execute("update ...")</span></code></pre></td></tr></table></div></figure>
 
 
 

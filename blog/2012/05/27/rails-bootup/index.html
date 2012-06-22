@@ -9,8 +9,7 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="大部分书上介绍rails的第一条命令是： 1
-rails new project 这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践： 集成Capistrano Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano， &hellip;">
+  <meta name="description" content="RVM ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,13 +92,39 @@ rails new project 这会自动生成一个项目的基本框架，但后续的�
   </header>
 
 
-<div class="entry-content"><p>大部分书上介绍rails的第一条命令是：</p>
+<div class="entry-content"><h3>RVM</h3>
+
+<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>别忘了重新登录，以生效上面的profile。</p>
+
+<h3>Ruby和Rails</h3>
+
+<p>有了rvm，可以很方便的安装ruby了，如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.3
+</span><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
+
+
+<p>理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多.</p>
+
+<p>大部分书上介绍rails的第一条命令是：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rails new project</span></code></pre></td></tr></table></div></figure>
 
-
-<p>这会自动生成一个项目的基本框架，但后续的调整还有很多，且千差万别，这里列举一些我们的最佳实践：</p>
 
 <h3>集成Capistrano</h3>
 
@@ -223,7 +248,7 @@ rails new project 这会自动生成一个项目的基本框架，但后续的�
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/07/rails-on-osx/">OSX下的Rails环境</a>
+        <a href="/blog/2012/01/07/rails-on-osx/">Rails cheat sheet</a>
       </li>
     
   </ul>

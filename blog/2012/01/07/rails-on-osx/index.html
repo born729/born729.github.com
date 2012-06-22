@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OSX下的Rails环境 - Born729</title>
+  <title>Rails cheat sheet - Born729</title>
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="手头的OSX 10.5，整理了安装Rails的方法，记录在这里： RVM ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem， &hellip;">
+  <meta name="description" content="执行sql update语句 1
+ActiveRecord::Base.connection.execute("update ...") ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,7 +70,7 @@
   
   <header>
     
-      <h1 class="entry-title">OSX下的Rails环境</h1>
+      <h1 class="entry-title">Rails Cheat Sheet</h1>
     
     
       <p class="meta">
@@ -92,60 +93,10 @@
   </header>
 
 
-<div class="entry-content"><p>手头的OSX 10.5，整理了安装Rails的方法，记录在这里：</p>
-
-<h3>RVM</h3>
-
-<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
+<div class="entry-content"><h4>执行sql update语句</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
-
-
-<p>别忘了重新登录，以生效上面的profile。</p>
-
-<h3>Ruby</h3>
-
-<p>有了rvm，可以很方便的安装ruby了，如下：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>将1.9.2设置为缺省的ruby：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.2 --default</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Rails</h3>
-
-<p>有了ruby和gem，就可以安装rails了，理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多，所以：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注，上面的引号是反引号，不是单引号，localhost 8888 你也应该懂的。</p>
-
-<h3>Sqlite3</h3>
-
-<p>本来装好了rails，就可以开工了，不过在OSX 10.5下，下面这个特殊的步骤需要先做一下，以解决sqlite版本过老的问题，先安装homebrew这个极好的OSX包管理器：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后刷新sqlite</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install sqlite</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ActiveRecord::Base.connection.execute("update ...")</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -234,7 +185,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/07/rails-on-osx/">OSX下的Rails环境</a>
+        <a href="/blog/2012/01/07/rails-on-osx/">Rails cheat sheet</a>
       </li>
     
   </ul>
