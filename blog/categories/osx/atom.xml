@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-06-22T08:05:39+08:00</updated>
+  <updated>2012-07-22T17:33:50+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[bash on osx]]></title>
+    <link href="http://born729.github.com/blog/2012/07/22/bash-on-osx/"/>
+    <updated>2012-07-22T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/07/22/bash-on-osx</id>
+    <content type="html"><![CDATA[<p>bash在运行的时候分两种情况，login shell和非login shell。
+login shell会执行下列文件：</p>
+
+<ul>
+<li>/etc/profile</li>
+<li>~/.bash_profile</li>
+<li>~/.bash_login(没有.bash_profile的情况下运行)</li>
+<li>~/.profile(没有.bash_login的情况下运行)</li>
+</ul>
+
+
+<p>非login shell则是 ~/.bashrc, osx和Linux不一样的是，每次运行Terminal，都是login shell，所以osx下一个常见问题就是.bashrc的设置不起作用，所以，可以在bash_profile下增加这样一行:
+<code>
+[ -r ~/.bashrc ] &amp;&amp; source ~/.bashrc
+</code>
+这样，.bashrc中的设置就在osx下也可以起作用了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[远程执行textmate]]></title>
