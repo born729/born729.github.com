@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2012-10-15T08:22:10+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python XML]]></title>
+    <link href="http://born729.github.com/blog/2012/10/09/python-xml/"/>
+    <updated>2012-10-09T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/10/09/python-xml</id>
+    <content type="html"><![CDATA[<p>Python的html/xml解析工具有很多
+* ElementTree
+* BeautifulSoup
+* lxml
+*</p>
+
+<h3>ElementTree</h3>
+
+<p>ElementTree是Python内置的XML解析工具因此无需第三方库
+* 简单的xpath支持</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,11 +9,13 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="bash在运行的时候分两种情况，login shell和非login shell。
-login shell会执行下列文件： /etc/profile
-~/.bash_profile
-~/.bash_login(没有.bash_profile的情况下运行)
-~/.profile(没有. &hellip;">
+  <meta name="description" content="Python的html/xml解析工具有很多
+* ElementTree
+* BeautifulSoup
+* lxml
+* ElementTree ElementTree是Python内置的XML解析工具因此无需第三方库
+* 简单的xpath支持
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +78,51 @@ login shell会执行下列文件： /etc/profile
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/10/09/python-xml/">Python XML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Python的html/xml解析工具有很多
+* ElementTree
+* BeautifulSoup
+* lxml
+*</p>
+
+<h3>ElementTree</h3>
+
+<p>ElementTree是Python内置的XML解析工具因此无需第三方库
+* 简单的xpath支持</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/07/22/bash-on-osx/">Bash on Osx</a></h1>
     
     
@@ -117,6 +164,18 @@ login shell会执行下列文件：</p>
 
 
 <p>这样，.bashrc中的设置就在osx下也可以起作用了。</p>
+
+<p>顺便，如果切换shell的话，可以用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo chsh -s /bin/zsh username</span></code></pre></td></tr></table></div></figure>
+
+
+<p>临时切换shell，可以用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>exec bash</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -640,6 +699,10 @@ login shell会执行下列文件：</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/09/python-xml/">Python XML</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a>
       </li>
     
@@ -653,10 +716,6 @@ login shell会执行下列文件：</p>
     
       <li class="post">
         <a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/28/rails-host-vps/">Rails在VPS的部署</a>
       </li>
     
   </ul>

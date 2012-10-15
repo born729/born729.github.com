@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-07-22T17:36:27+08:00</updated>
+  <updated>2012-10-15T08:22:10+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python XML]]></title>
+    <link href="http://born729.github.com/blog/2012/10/09/python-xml/"/>
+    <updated>2012-10-09T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/10/09/python-xml</id>
+    <content type="html"><![CDATA[<p>Python的html/xml解析工具有很多
+* ElementTree
+* BeautifulSoup
+* lxml
+*</p>
+
+<h3>ElementTree</h3>
+
+<p>ElementTree是Python内置的XML解析工具因此无需第三方库
+* 简单的xpath支持</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[bash on osx]]></title>
@@ -36,6 +54,18 @@ login shell会执行下列文件：</p>
 
 
 <p>这样，.bashrc中的设置就在osx下也可以起作用了。</p>
+
+<p>顺便，如果切换shell的话，可以用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo chsh -s /bin/zsh username</span></code></pre></td></tr></table></div></figure>
+
+
+<p>临时切换shell，可以用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>exec bash</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

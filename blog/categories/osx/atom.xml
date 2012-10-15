@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-07-22T17:36:27+08:00</updated>
+  <updated>2012-10-15T08:22:10+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -34,6 +34,15 @@ login shell会执行下列文件：</p>
 [ -r ~/.bashrc ] &amp;&amp; source ~/.bashrc
 </code>
 这样，.bashrc中的设置就在osx下也可以起作用了。</p>
+
+<p>顺便，如果切换shell的话，可以用
+<code>
+sudo chsh -s /bin/zsh username
+</code>
+临时切换shell，可以用
+<code>
+exec bash
+</code></p>
 ]]></content>
   </entry>
   
