@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-10-15T08:22:10+08:00</updated>
+  <updated>2012-11-23T20:46:23+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -28,6 +28,14 @@
 
 <p>ElementTree是Python内置的XML解析工具因此无需第三方库
 * 简单的xpath支持</p>
+
+<h3>BeautifulSoup</h3>
+
+<p>BeautifulSoup对html有很好的兼容性，不要求严格的xml，这对于网页解析比较方便。</p>
+
+<h3>lxml</h3>
+
+<p>使用C扩展的xml解析库，性能最佳。</p>
 ]]></content>
   </entry>
   
