@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-11-23T20:46:23+08:00</updated>
+  <updated>2012-11-23T20:47:55+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -18,16 +18,24 @@
     <link href="http://born729.github.com/blog/2012/10/09/python-xml/"/>
     <updated>2012-10-09T00:00:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/10/09/python-xml</id>
-    <content type="html"><![CDATA[<p>Python的html/xml解析工具有很多
-* ElementTree
-* BeautifulSoup
-* lxml
-*</p>
+    <content type="html"><![CDATA[<p>Python的html/xml解析工具有很多</p>
+
+<ul>
+<li>ElementTree</li>
+<li>BeautifulSoup</li>
+<li>lxml</li>
+<li></li>
+</ul>
+
 
 <h3>ElementTree</h3>
 
-<p>ElementTree是Python内置的XML解析工具因此无需第三方库
-* 简单的xpath支持</p>
+<p>ElementTree是Python内置的XML解析工具因此无需第三方库</p>
+
+<ul>
+<li>简单的xpath支持</li>
+</ul>
+
 
 <h3>BeautifulSoup</h3>
 
