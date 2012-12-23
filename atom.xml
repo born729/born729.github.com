@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-12-23T22:40:43+08:00</updated>
+  <updated>2012-12-23T22:44:14+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -31,6 +31,18 @@
 
 
 <p>重启Sublime就好了。</p>
+
+<h3>修改Tab大小</h3>
+
+<p>选择菜单 Preferences 》Setting more 》Syntax specific，输入以下配置：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "tab_size": 2
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

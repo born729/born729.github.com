@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tools | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/tools/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-12-23T22:40:43+08:00</updated>
+  <updated>2012-12-23T22:44:14+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -29,6 +29,15 @@ cd ~/Library/Application Support/Sublime Text 2/Packages
 git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
 </code>
 重启Sublime就好了。</p>
+
+<h3>修改Tab大小</h3>
+
+<p>选择菜单 Preferences 》Setting more 》Syntax specific，输入以下配置：
+<code>
+{
+  "tab_size": 2
+}
+</code></p>
 ]]></content>
   </entry>
   
