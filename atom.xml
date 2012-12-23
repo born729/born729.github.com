@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2012-11-23T20:47:55+08:00</updated>
+  <updated>2012-12-23T22:40:43+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2]]></title>
+    <link href="http://born729.github.com/blog/2012/12/16/sublime/"/>
+    <updated>2012-12-16T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/12/16/sublime</id>
+    <content type="html"><![CDATA[<p>Sublime Text 2，OSX下最好的程序员编辑器：</p>
+
+<h3>支持coffeescript</h3>
+
+<p>Sublime Text 2支持Textmate bundle，所以很简单了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/Library/Application Support/Sublime Text 2/Packages
+</span><span class='line'>git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript</span></code></pre></td></tr></table></div></figure>
+
+
+<p>重启Sublime就好了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Meteor]]></title>
+    <link href="http://born729.github.com/blog/2012/12/01/meteor/"/>
+    <updated>2012-12-01T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/12/01/meteor</id>
+    <content type="html"><![CDATA[<p>Meteor，很新的一个Web开发框架，代表了下一代的Web开发框架的方向。</p>
+
+<h3>架构</h3>
+
+<h3>DOM处理</h3>
+
+<p>Meteor下，DOM是靠JS render出来的，因此DOM始终是处于动态变化过程中的，这给很多DOM处理带来的额外的复杂性，比如需要初始化一些JS控件，就不能只在Meteor.startup中做，而应该在Meteor的template render后来做，比如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Template.header.rendered = -&gt;
+</span><span class='line'>  $('[data-role="dropdown"]').each -&gt;
+</span><span class='line'>    $(this).Dropdown()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样的话可以解决DOM的问题，但是紧接的问题就是如何防止因为多次回调导致一些事件被重复bind，jquery的事件是串接bind的，可以这样解决：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>selector.unbind("click");
+</span><span class='line'>selector.on("click",...);</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python XML]]></title>
@@ -24,7 +78,6 @@
 <li>ElementTree</li>
 <li>BeautifulSoup</li>
 <li>lxml</li>
-<li></li>
 </ul>
 
 

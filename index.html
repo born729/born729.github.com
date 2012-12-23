@@ -9,9 +9,10 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Python的html/xml解析工具有很多 ElementTree
-BeautifulSoup
-lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三方库 简单的xpath支持 BeautifulSoup &hellip;">
+  <meta name="description" content="Sublime Text 2，OSX下最好的程序员编辑器： 支持coffeescript Sublime Text 2支持Textmate bundle，所以很简单了： 1
+2
+cd ~/Library/Application Support/Sublime Text 2/Packages
+git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +75,114 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/12/16/sublime/">Sublime Text 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sublime Text 2，OSX下最好的程序员编辑器：</p>
+
+<h3>支持coffeescript</h3>
+
+<p>Sublime Text 2支持Textmate bundle，所以很简单了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/Library/Application Support/Sublime Text 2/Packages
+</span><span class='line'>git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript</span></code></pre></td></tr></table></div></figure>
+
+
+<p>重启Sublime就好了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/01/meteor/">Meteor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-01T00:00:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Meteor，很新的一个Web开发框架，代表了下一代的Web开发框架的方向。</p>
+
+<h3>架构</h3>
+
+<h3>DOM处理</h3>
+
+<p>Meteor下，DOM是靠JS render出来的，因此DOM始终是处于动态变化过程中的，这给很多DOM处理带来的额外的复杂性，比如需要初始化一些JS控件，就不能只在Meteor.startup中做，而应该在Meteor的template render后来做，比如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Template.header.rendered = -&gt;
+</span><span class='line'>  $('[data-role="dropdown"]').each -&gt;
+</span><span class='line'>    $(this).Dropdown()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样的话可以解决DOM的问题，但是紧接的问题就是如何防止因为多次回调导致一些事件被重复bind，jquery的事件是串接bind的，可以这样解决：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>selector.unbind("click");
+</span><span class='line'>selector.on("click",...);</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/10/09/python-xml/">Python XML</a></h1>
     
     
@@ -103,7 +212,6 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
 <li>ElementTree</li>
 <li>BeautifulSoup</li>
 <li>lxml</li>
-<li></li>
 </ul>
 
 
@@ -622,83 +730,9 @@ login shell会执行下列文件：</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/05/git-notes/">Git笔记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-05T00:00:00+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一图胜千言</p>
-
-<p><img src="http://osteele.com/images/2008/git-transport.png" alt="" /></p>
-
-<h4>获取</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>本地操作</h4>
-
-<p>添加所有修改，包括删除的文件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add . -A</span></code></pre></td></tr></table></div></figure>
-
-
-<p>查看修改情况</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git status</span></code></pre></td></tr></table></div></figure>
-
-
-<p>提交到本地</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git commit -m "comment"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>取消，下面两条都可以，暂存区域会取消，&#8211;hard会将修改的文件恢复到上次commit状态。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git reset
-</span><span class='line'>git reset --hard</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>远程服务器</h4>
-
-<h3>其它</h3>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -711,6 +745,14 @@ login shell会执行下列文件：</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/16/sublime/">Sublime Text 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/01/meteor/">Meteor</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/09/python-xml/">Python XML</a>
       </li>
     
@@ -720,14 +762,6 @@ login shell会执行下列文件：</p>
     
       <li class="post">
         <a href="/blog/2012/06/24/cocoa-gdb/">Cocoa debug</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/27/rails-bootup/">Rails向导</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a>
       </li>
     
   </ul>

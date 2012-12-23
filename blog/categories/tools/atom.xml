@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tools | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2012-12-23T22:40:43+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2]]></title>
+    <link href="http://born729.github.com/blog/2012/12/16/sublime/"/>
+    <updated>2012-12-16T00:00:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/12/16/sublime</id>
+    <content type="html"><![CDATA[<p>Sublime Text 2，OSX下最好的程序员编辑器：</p>
+
+<h3>支持coffeescript</h3>
+
+<p>Sublime Text 2支持Textmate bundle，所以很简单了：</p>
+
+<p><code>
+cd ~/Library/Application Support/Sublime Text 2/Packages
+git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
+</code>
+重启Sublime就好了。</p>
+]]></content>
+  </entry>
+  
+</feed>
