@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: life | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2013-05-17T21:25:54+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[多Github帐号]]></title>
+    <link href="http://born729.github.com/blog/2012/05/11/multiple-github-accounts/"/>
+    <updated>2012-05-11T20:26:00+08:00</updated>
+    <id>http://born729.github.com/blog/2012/05/11/multiple-github-accounts</id>
+    <content type="html"><![CDATA[<p>如果有多Github帐号，想同时工作，ssh需要一番设置，才能工作正常。</p>
+
+<h3>创建多个key</h3>
+
+<p>首先必须要有多个key</p>
+
+<p><code>
+ssh-keygen -t rsa -C "your-email-address"
+</code></p>
+
+<p>保存的时候，每个key要选择不同的文件，比如id_rsa_aaa和id_rsa_bbb，做出来的key要通过ssh-add加入到系统中</p>
+
+<p><code>
+ssh-add id_rsa
+</code></p>
+
+<h3>设置ssh的config文件</h3>
+
+<p>```
+Host github-aaa
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_aaa
+Host github-bbb
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_bbb</p>
+
+<p>```</p>
+
+<h3>调试</h3>
+
+<p>分别用下面两条命令来测试ssh key使用是否正确。</p>
+
+<p><code>
+ssh -vT github-aaa
+ssh -vT github-bbb
+</code></p>
+
+<p>更多过程，可以参考 <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">这里</a></p>
+]]></content>
+  </entry>
+  
+</feed>

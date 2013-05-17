@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Git笔记 - Born729</title>
+  <title>多Github帐号 - Born729</title>
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="一图胜千言 获取 1
-git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git 本地操作 添加所有修改，包括删除的文件 1
-git add . -A 查看修改情况 1
-git status 提交到本地 1
-git commit &hellip;">
+  <meta name="description" content="如果有多Github帐号，想同时工作，ssh需要一番设置，才能工作正常。 创建多个key 首先必须要有多个key 1
+ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择不同的文件，比如id_rsa_aaa和id_rsa_bbb， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +19,7 @@ git commit &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://born729.github.com/blog/2012/01/05/git-notes/">
+  <link rel="canonical" href="http://born729.github.com/blog/2012/05/11/multiple-github-accounts/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -73,7 +70,7 @@ git commit &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Git笔记</h1>
+      <h1 class="entry-title">多Github帐号</h1>
     
     
       <p class="meta">
@@ -89,54 +86,61 @@ git commit &hellip;">
   
 
 
-<time datetime="2012-01-05T00:00:00+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2012</time>
+<time datetime="2012-05-11T20:26:00+08:00" pubdate data-updated="true">May 11<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>一图胜千言</p>
+<div class="entry-content"><p>如果有多Github帐号，想同时工作，ssh需要一番设置，才能工作正常。</p>
 
-<p><img src="http://osteele.com/images/2008/git-transport.png" alt="" /></p>
+<h3>创建多个key</h3>
 
-<h4>获取</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>本地操作</h4>
-
-<p>添加所有修改，包括删除的文件</p>
+<p>首先必须要有多个key</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add . -A</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -C "your-email-address"</span></code></pre></td></tr></table></div></figure>
 
 
-<p>查看修改情况</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git status</span></code></pre></td></tr></table></div></figure>
-
-
-<p>提交到本地</p>
+<p>保存的时候，每个key要选择不同的文件，比如id_rsa_aaa和id_rsa_bbb，做出来的key要通过ssh-add加入到系统中</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git commit -m "comment"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-add id_rsa</span></code></pre></td></tr></table></div></figure>
 
 
-<p>取消，下面两条都可以，暂存区域会取消，&#8211;hard会将修改的文件恢复到上次commit状态。</p>
+<h3>设置ssh的config文件</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git reset
-</span><span class='line'>git reset --hard</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Host github-aaa
+</span><span class='line'>  HostName github.com
+</span><span class='line'>  User git
+</span><span class='line'>  IdentityFile ~/.ssh/id_rsa_aaa
+</span><span class='line'>Host github-bbb
+</span><span class='line'>  HostName github.com
+</span><span class='line'>  User git
+</span><span class='line'>  IdentityFile ~/.ssh/id_rsa_bbb
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h4>远程服务器</h4>
+<h3>调试</h3>
 
-<h3>其它</h3>
+<p>分别用下面两条命令来测试ssh key使用是否正确。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -vT github-aaa
+</span><span class='line'>ssh -vT github-bbb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>更多过程，可以参考 <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">这里</a></p>
 </div>
 
 
@@ -159,12 +163,12 @@ git commit &hellip;">
   
 
 
-<time datetime="2012-01-05T00:00:00+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2012</time>
+<time datetime="2012-05-11T20:26:00+08:00" pubdate data-updated="true">May 11<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/git/'>git</a>
+    <a class='category' href='/blog/categories/life/'>life</a>
   
 </span>
 
@@ -173,7 +177,7 @@ git commit &hellip;">
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://born729.github.com/blog/2012/01/05/git-notes/" data-via="" data-counturl="http://born729.github.com/blog/2012/01/05/git-notes/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://born729.github.com/blog/2012/05/11/multiple-github-accounts/" data-via="" data-counturl="http://born729.github.com/blog/2012/05/11/multiple-github-accounts/" >Tweet</a>
   
   
   
@@ -182,8 +186,10 @@ git commit &hellip;">
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/04/28/rails-host-vps/" title="Previous Post: Rails在VPS的部署">&laquo; Rails在VPS的部署</a>
       
-        <a class="basic-alignment right" href="/blog/2012/01/07/rails-on-osx/" title="Next Post: Rails cheat sheet">Rails cheat sheet &raquo;</a>
+      
+        <a class="basic-alignment right" href="/blog/2012/05/22/remote-textmate/" title="Next Post: 远程执行textmate">远程执行textmate &raquo;</a>
       
     </p>
   </footer>
@@ -250,8 +256,8 @@ git commit &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://born729.github.com/blog/2012/01/05/git-notes/';
-        var disqus_url = 'http://born729.github.com/blog/2012/01/05/git-notes/';
+        var disqus_identifier = 'http://born729.github.com/blog/2012/05/11/multiple-github-accounts/';
+        var disqus_url = 'http://born729.github.com/blog/2012/05/11/multiple-github-accounts/';
         var disqus_script = 'embed.js';
       
     (function () {
