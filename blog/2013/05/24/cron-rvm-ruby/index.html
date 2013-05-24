@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python XML - Born729</title>
+  <title>用cron执行ruby脚本 - Born729</title>
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Python的html/xml解析工具有很多 ElementTree
-BeautifulSoup
-lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三方库 简单的xpath支持 BeautifulSoup &hellip;">
+  <meta name="description" content="在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后： 1
+0 */8 * * * ruby /home/myname/test.rb &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://born729.github.com/blog/2012/10/09/python-xml/">
+  <link rel="canonical" href="http://born729.github.com/blog/2013/05/24/cron-rvm-ruby/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -71,7 +70,7 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
   <header>
     
-      <h1 class="entry-title">Python XML</h1>
+      <h1 class="entry-title">用cron执行ruby脚本</h1>
     
     
       <p class="meta">
@@ -87,38 +86,44 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
 
 
-<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2013-05-24T20:46:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Python的html/xml解析工具有很多</p>
+<div class="entry-content"><p>在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后：</p>
 
-<ul>
-<li>ElementTree</li>
-<li>BeautifulSoup</li>
-<li>lxml</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>ElementTree</h3>
+<p>我的本意很简单，每8小时运行一次test.rb，从/var/log/syslog来看，cron已经正确调度了，可是看起来test.rb没有被执行，因为syslog中没有记录test.rb的标准输出，所以我修改了crontab为：</p>
 
-<p>ElementTree是Python内置的XML解析工具因此无需第三方库</p>
-
-<ul>
-<li>简单的xpath支持</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb &gt;&gt; /home/myname/cron.log 2&gt;&1</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>BeautifulSoup</h3>
+<p>后面的2>&amp;1是为了将标准错误输出和标准输出都记录，通过cron.log，我看到是因为ruby命令没有找到，我随之理解了，ruby是用RVM安装的，因此ruby的整个执行环境依赖于当前用户的shell，但cron在执行脚本时，环境是一个全新的shell，自然连ruby都不能找到了，对于这个问题，google上有很多解决方法，比如在crontab中增加环境变量，比如在执行test.rb前先执行RVM的初始化脚本，但是我觉得都不够优雅，多次尝试之后，最终的解决方案是：</p>
 
-<p>BeautifulSoup对html有很好的兼容性，不要求严格的xml，这对于网页解析比较方便。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l /home/myname/test.sh</span></code></pre></td></tr></table></div></figure>
 
-<h3>lxml</h3>
 
-<p>使用C扩展的xml解析库，性能最佳。</p>
+<p>而test.sh的内容很简单，就是</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行的解决方法是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l -c /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可惜在我的环境下，没有成功，可能-c这个参数我还没有参透吧。</p>
 </div>
 
 
@@ -141,14 +146,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
 
 
-<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2013-05-24T20:46:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/python/'>python</a>
-  
-</span>
 
 
     </p>
@@ -162,10 +161,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/07/22/bash-on-osx/" title="Previous Post: bash on osx">&laquo; bash on osx</a>
+        <a class="basic-alignment left" href="/blog/2012/12/16/sublime/" title="Previous Post: Sublime Text 2">&laquo; Sublime Text 2</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/12/01/meteor/" title="Next Post: Meteor">Meteor &raquo;</a>
       
     </p>
   </footer>
@@ -229,8 +226,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://born729.github.com/blog/2012/10/09/python-xml/';
-        var disqus_url = 'http://born729.github.com/blog/2012/10/09/python-xml/';
+        var disqus_identifier = 'http://born729.github.com/blog/2013/05/24/cron-rvm-ruby/';
+        var disqus_url = 'http://born729.github.com/blog/2013/05/24/cron-rvm-ruby/';
         var disqus_script = 'embed.js';
       
     (function () {

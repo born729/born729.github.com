@@ -9,8 +9,14 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="执行sql update语句 1
-ActiveRecord::Base.connection.execute("update ...") ">
+  <meta name="description" content="Octopress是非常方便的静态博客程序，尤其适合github。 安装 1
+2
+3
+4
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+bundle install
+rake install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +73,92 @@ ActiveRecord::Base.connection.execute("update ...") ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/10/octopress/">Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-10T13:01:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://octopress.org">Octopress</a>是非常方便的静态博客程序，尤其适合github。</p>
+
+<h3>安装</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这就把Octopress装好了，上面的目录名octopress可以任意更改，接下来就需要设置github绑定了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的命令会有提示输入git路径，注意要输入git的全路径，比如git@github.com:xxx/yyy.git</p>
+
+<h3>使用</h3>
+
+<p>新增博客帖子很简单，可以使用命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当然也可以在source/_posts目录下手动添加博客，要编译生成静态页面，并上传到github</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你的ruby gem比较复杂，则需要在命令前使用bundle exec。</p>
+
+<p>如果要上传源文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m "source commit"
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -201,6 +293,10 @@ ActiveRecord::Base.connection.execute("update ...") ">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/16/sublime/">Sublime Text 2</a>
       </li>
     
@@ -216,15 +312,8 @@ ActiveRecord::Base.connection.execute("update ...") ">
         <a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/06/24/cocoa-gdb/">Cocoa debug</a>
-      </li>
-    
   </ul>
 </section>
-
-
-
 
 
 
@@ -259,16 +348,6 @@ ActiveRecord::Base.connection.execute("update ...") ">
 
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 

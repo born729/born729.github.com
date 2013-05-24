@@ -9,10 +9,8 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Sublime Text 2，OSX下最好的程序员编辑器： 支持coffeescript Sublime Text 2支持Textmate bundle，所以很简单了： 1
-2
-cd ~/Library/Application Support/Sublime Text 2/Packages
-git &hellip;">
+  <meta name="description" content="在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后： 1
+0 */8 * * * ruby /home/myname/test.rb &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +67,72 @@ git &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-24T20:46:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我的本意很简单，每8小时运行一次test.rb，从/var/log/syslog来看，cron已经正确调度了，可是看起来test.rb没有被执行，因为syslog中没有记录test.rb的标准输出，所以我修改了crontab为：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb &gt;&gt; /home/myname/cron.log 2&gt;&1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>后面的2>&amp;1是为了将标准错误输出和标准输出都记录，通过cron.log，我看到是因为ruby命令没有找到，我随之理解了，ruby是用RVM安装的，因此ruby的整个执行环境依赖于当前用户的shell，但cron在执行脚本时，环境是一个全新的shell，自然连ruby都不能找到了，对于这个问题，google上有很多解决方法，比如在crontab中增加环境变量，比如在执行test.rb前先执行RVM的初始化脚本，但是我觉得都不够优雅，多次尝试之后，最终的解决方案是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l /home/myname/test.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而test.sh的内容很简单，就是</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行的解决方法是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l -c /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可惜在我的环境下，没有成功，可能-c这个参数我还没有参透吧。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -697,92 +761,6 @@ login shell会执行下列文件：</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/10/octopress/">Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-10T13:01:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://octopress.org">Octopress</a>是非常方便的静态博客程序，尤其适合github。</p>
-
-<h3>安装</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress
-</span><span class='line'>bundle install
-</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这就把Octopress装好了，上面的目录名octopress可以任意更改，接下来就需要设置github绑定了：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面的命令会有提示输入git路径，注意要输入git的全路径，比如git@github.com:xxx/yyy.git</p>
-
-<h3>使用</h3>
-
-<p>新增博客帖子很简单，可以使用命令：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake new_post["title"]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>当然也可以在source/_posts目录下手动添加博客，要编译生成静态页面，并上传到github</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake preview
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如果你的ruby gem比较复杂，则需要在命令前使用bundle exec。</p>
-
-<p>如果要上传源文件：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m "source commit"
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -796,6 +774,10 @@ login shell会执行下列文件：</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/16/sublime/">Sublime Text 2</a>
@@ -813,15 +795,8 @@ login shell会执行下列文件：</p>
         <a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/06/24/cocoa-gdb/">Cocoa debug</a>
-      </li>
-    
   </ul>
 </section>
-
-
-
 
 
 
@@ -856,16 +831,6 @@ login shell会执行下列文件：</p>
 
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 
