@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2013-05-24T21:05:29+08:00</updated>
+  <updated>2013-05-25T08:40:00+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -42,7 +42,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
 
 
-<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行的解决方法是：</p>
+<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行不想要额外增加一个shell脚本的解决方法是：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l -c /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
