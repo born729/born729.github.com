@@ -9,8 +9,7 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后： 1
-0 */8 * * * ruby /home/myname/test.rb &hellip;">
+  <meta name="description" content="Ruby和Python是我最常用的两门脚本语言，他们两个都足够通用，不像PHP和Javascript那么局限，所以很有必要从使用者的角度，给他们两个做一个比较。 语法 语法上，我更喜欢Ruby，Python的特殊缩进是很多程序员比较难接受的一点，仅仅是空格的排版就决定语法逻辑，我很不喜欢， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,8 +57,6 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/apppp">Apppp.info</a></li>
-  <li><a href="/51beidanci">51beidanci.com</a></li>
 </ul>
 
 </nav>
@@ -67,6 +64,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/29/ruby-vs-python/">Ruby vs Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-29T23:35:00+08:00" pubdate data-updated="true">May 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby和Python是我最常用的两门脚本语言，他们两个都足够通用，不像PHP和Javascript那么局限，所以很有必要从使用者的角度，给他们两个做一个比较。</p>
+
+<h3>语法</h3>
+
+<p>语法上，我更喜欢Ruby，Python的特殊缩进是很多程序员比较难接受的一点，仅仅是空格的排版就决定语法逻辑，我很不喜欢，况且还有一个Tab在捣乱，每次拿到一个新编辑器写Python代码，都要去设置空格替换Tab，否则简直没法工作。所以Ruby胜在符合常规。</p>
+
+<h3>性能</h3>
+
+<p>当前来看，解释器性能上，毫无疑问应该是Python占优，我用过Ruby 1.9.2，曾经遇到过因为Require嵌套比较多，导致脚本启动特别慢的问题，换到1.9.3版本才稍稍正常些，但感觉还是比不上Python的性能。</p>
+
+<h3>扩展包</h3>
+
+<p>Ruby自然是用gem来管理扩展包，如果包之间依赖关系复杂，还可以使用bundle来维护这个依赖关系。Python里的easy_install应该是gem的等价物，但bundle就没有合适的等价物了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -674,93 +719,6 @@ login shell会执行下列文件：</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/28/rails-host-vps/">Rails在VPS的部署</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这是我们在VPS的部署方案。</p>
-
-<h3>需求</h3>
-
-<ul>
-<li>VPS安装Ubuntu 11.04</li>
-<li>RVM安装ruby和rails</li>
-<li>Nginx和Passenger模块</li>
-<li>PostgreSQL</li>
-</ul>
-
-
-<h3>VPS</h3>
-
-<ul>
-<li>我们使用Ubuntu11.04，设置好ssh</li>
-</ul>
-
-
-<h3>Ruby和Rails</h3>
-
-<p>ruby要用1.9.3以上版本，因为1.9.3版本解决了一个性能问题，Rails用3.1以上版本，因为在之前的版本会有assets方面的兼容性问题。</p>
-
-<h3>Nginx</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install passenger
-</span><span class='line'>sudo apt-get install libcurl4-openssl-dev
-</span><span class='line'>rvmsudo passenger-install-nginx-module</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装nginx启动脚本</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://www.smashingmagazine.com/files/nginx
-</span><span class='line'>sudo mv nginx /etc/init.d/nginx
-</span><span class='line'>sudo chmod +x /etc/init.d/nginx
-</span><span class='line'>sudo /usr/sbin/update-rc.d -f nginx defaults</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>PostgreSQL</h3>
-
-<p>我们偏爱PostgreSQL，除了PostgreSQL成熟以外，还因为PostgreSQL和Sqlite比较接近的SQL语句，这样可以在两者间随意切换。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install postgresql libpq-dev</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -776,6 +734,10 @@ login shell会执行下列文件：</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/05/29/ruby-vs-python/">ruby vs python</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a>
       </li>
     
@@ -789,10 +751,6 @@ login shell会执行下列文件：</p>
     
       <li class="post">
         <a href="/blog/2012/10/09/python-xml/">Python XML</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a>
       </li>
     
   </ul>

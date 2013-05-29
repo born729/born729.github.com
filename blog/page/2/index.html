@@ -9,14 +9,10 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Octopress是非常方便的静态博客程序，尤其适合github。 安装 1
-2
-3
-4
-git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install &hellip;">
+  <meta name="description" content="这是我们在VPS的部署方案。 需求 VPS安装Ubuntu 11.04
+RVM安装ruby和rails
+Nginx和Passenger模块
+PostgreSQL VPS 我们使用Ubuntu11.04，设置好ssh Ruby和Rails ruby要用1.9.3以上版本，因为1.9. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,8 +60,6 @@ rake install &hellip;">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/apppp">Apppp.info</a></li>
-  <li><a href="/51beidanci">51beidanci.com</a></li>
 </ul>
 
 </nav>
@@ -73,6 +67,93 @@ rake install &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/28/rails-host-vps/">Rails在VPS的部署</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这是我们在VPS的部署方案。</p>
+
+<h3>需求</h3>
+
+<ul>
+<li>VPS安装Ubuntu 11.04</li>
+<li>RVM安装ruby和rails</li>
+<li>Nginx和Passenger模块</li>
+<li>PostgreSQL</li>
+</ul>
+
+
+<h3>VPS</h3>
+
+<ul>
+<li>我们使用Ubuntu11.04，设置好ssh</li>
+</ul>
+
+
+<h3>Ruby和Rails</h3>
+
+<p>ruby要用1.9.3以上版本，因为1.9.3版本解决了一个性能问题，Rails用3.1以上版本，因为在之前的版本会有assets方面的兼容性问题。</p>
+
+<h3>Nginx</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install passenger
+</span><span class='line'>sudo apt-get install libcurl4-openssl-dev
+</span><span class='line'>rvmsudo passenger-install-nginx-module</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装nginx启动脚本</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://www.smashingmagazine.com/files/nginx
+</span><span class='line'>sudo mv nginx /etc/init.d/nginx
+</span><span class='line'>sudo chmod +x /etc/init.d/nginx
+</span><span class='line'>sudo /usr/sbin/update-rc.d -f nginx defaults</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>PostgreSQL</h3>
+
+<p>我们偏爱PostgreSQL，除了PostgreSQL成熟以外，还因为PostgreSQL和Sqlite比较接近的SQL语句，这样可以在两者间随意切换。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install postgresql libpq-dev</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -293,6 +374,10 @@ rake install &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/05/29/ruby-vs-python/">ruby vs python</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a>
       </li>
     
@@ -306,10 +391,6 @@ rake install &hellip;">
     
       <li class="post">
         <a href="/blog/2012/10/09/python-xml/">Python XML</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a>
       </li>
     
   </ul>
