@@ -1,0 +1,24 @@
+---
+layout: post
+title: Cocoa debug
+comments: true
+categories: rails
+---
+
+### F-Script 注入
+事先将FScript.framework拷贝到/Library/Frameworks，然后使用gdb
+
+
+```
+attach xxx
+p (char)[[NSBundle bundleWithPath:@"/Library/Frameworks/FScript.framework"] load]
+p (void)[FScriptMenuItem insertInMainMenu]
+continue
+```
+
+### F-Script console
+```
+keyWindow := NSApplication sharedApplication keyWindow.
+```
+
+然后就可以做很多事情了

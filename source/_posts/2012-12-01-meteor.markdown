@@ -1,0 +1,25 @@
+---
+layout: post
+title: Meteor
+comments: true
+categories: web
+---
+
+Meteor，很新的一个Web开发框架，代表了下一代的Web开发框架的方向。
+
+### 架构
+
+### DOM处理
+Meteor下，DOM是靠JS render出来的，因此DOM始终是处于动态变化过程中的，这给很多DOM处理带来的额外的复杂性，比如需要初始化一些JS控件，就不能只在Meteor.startup中做，而应该在Meteor的template render后来做，比如：
+
+```
+Template.header.rendered = ->
+  $('[data-role="dropdown"]').each ->
+    $(this).Dropdown()
+```
+这样的话可以解决DOM的问题，但是紧接的问题就是如何防止因为多次回调导致一些事件被重复bind，jquery的事件是串接bind的，可以这样解决：
+```
+selector.unbind("click");
+selector.on("click",...);
+```
+

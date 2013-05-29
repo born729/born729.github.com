@@ -1,0 +1,43 @@
+---
+layout: post
+title: Git笔记
+comments: true
+categories: git
+---
+
+一图胜千言
+
+![](http://osteele.com/images/2008/git-transport.png)
+
+#### 获取
+
+```
+git clone git@github.com:liuzhongshu/liuzhongshu.github.com.git
+```
+
+#### 本地操作
+
+添加所有修改，包括删除的文件
+```
+git add . -A
+```
+
+查看修改情况
+```
+git status
+```
+
+提交到本地
+```
+git commit -m "comment"
+```
+
+取消，下面两条都可以，暂存区域会取消，--hard会将修改的文件恢复到上次commit状态。
+```
+git reset
+git reset --hard
+```
+
+#### 远程服务器
+
+### 其它

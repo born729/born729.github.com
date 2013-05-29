@@ -1,0 +1,27 @@
+---
+layout: post
+title: Sublime Text 2
+comments: true
+categories: tools
+---
+
+Sublime Text 2，OSX下最好的程序员编辑器：
+
+### 支持coffeescript
+
+Sublime Text 2支持Textmate bundle，所以很简单了：
+
+```
+cd ~/Library/Application Support/Sublime Text 2/Packages
+git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript
+```
+重启Sublime就好了。
+
+### 修改Tab大小
+
+选择菜单 Preferences 》Setting more 》Syntax specific，输入以下配置：
+```
+{
+  "tab_size": 2
+}
+```
