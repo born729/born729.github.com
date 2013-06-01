@@ -37,7 +37,17 @@ git commit -m "comment"
 git reset
 git reset --hard
 ```
-
+比较，下面三条依次用最新版本，上次版本，上上次版本和本地进行比较
+```
+git diff 
+git diff HEAD^
+git diff HEAD~2
+```
 #### 远程服务器
+
+添加远程服务器
+```
+git remote add origin url
+```
 
 ### 其它
