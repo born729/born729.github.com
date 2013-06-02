@@ -39,3 +39,14 @@ git add .
 git commit -m "source commit"
 git push origin source
 ```
+### 美化
+如果喜欢某个样式，可以使用git submodule来安装：
+```
+git submodule add git://github.com/octopress-themes/xxx.git .themes/xxx
+rake install['xxx']
+```
+这样做的好处是，可以随时更新theme
+```
+cd .themes/xxx
+git pull origin master
+```
