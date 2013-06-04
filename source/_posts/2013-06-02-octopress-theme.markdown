@@ -33,9 +33,4 @@ octopress的theme一样体现了黑客风格，使用sass来做预编译。sass�
 ```
 显然，从命名上大致可以看出，utilities部分是一些公共函数。solarized定义一些颜色，theme是一些可调整变量，typography定义字体，最后的layout有点奇怪，他准确的说是整体布局，通过media query定义了一些全局并且可变的布局。具体的布局样式的定义其实都在另一个目录partials下，partials的加载就无所谓顺序了，针对各页面的组成做相应的细节定义，比如header，footer等。
 
-在开始我自己的theme之前，我需要几个灵感。
-
-[](https://github.com/macjasp/cleanpress/)
-双栏，朴素，我喜欢他的大字体，[演示](http://www.dallinbryce.com/blog/fiction/)。
-
-单栏，朴素，一样的大字体，[演示](http://jiaqing.me/)，没有源码
+在开始我自己的theme之前，我需要一些灵感，可以在[这里](http://opthemes.com/)获得。
