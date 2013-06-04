@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2013-05-31T00:11:55+08:00</updated>
+  <updated>2013-06-04T22:19:36+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress-theme]]></title>
+    <link href="http://born729.github.com/blog/2013/06/02/octopress-theme/"/>
+    <updated>2013-06-02T06:55:00+08:00</updated>
+    <id>http://born729.github.com/blog/2013/06/02/octopress-theme</id>
+    <content type="html"><![CDATA[<p>octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@import "compass";
+</span><span class='line'>@include global-reset;
+</span><span class='line'>@include reset-html5;
+</span><span class='line'>
+</span><span class='line'>@import "custom/colors";
+</span><span class='line'>@import "custom/fonts";
+</span><span class='line'>@import "custom/layout";
+</span><span class='line'>@import "base";
+</span><span class='line'>@import "partials";
+</span><span class='line'>@import "plugins/**/*";
+</span><span class='line'>@import "custom/styles";</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可见几个目录的分工，custom用于在theme的基础上做用户定义，plugins是插件，基本的theme定义放在base和parials下。将custom分为两部分，一部分在base前，一部分放在最后是有讲究的，放在base之前的都是一些sass变量定义，因为sass在变量定义的时候支持前面的定义覆盖后面的定义（使用sass的!default来实现），所以这部分变量定义的部分要必须在前面。最后的custome/styles定义的一些样式，按照css的规格，后定义的样式覆盖前面的样式，所以这部分又必须放在后面了。</p>
+
+<p>一般来说custom和plugins部分的内容都是空的，所以主要的theme定义就是在base和partials两个子目录下。base的加载顺序是这样的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@import "base/utilities";
+</span><span class='line'>@import "base/solarized";
+</span><span class='line'>@import "base/theme";
+</span><span class='line'>@import "base/typography";
+</span><span class='line'>@import "base/layout";</span></code></pre></td></tr></table></div></figure>
+
+
+<p>显然，从命名上大致可以看出，utilities部分是一些公共函数。solarized定义一些颜色，theme是一些可调整变量，typography定义字体，最后的layout有点奇怪，他准确的说是整体布局，通过media query定义了一些全局并且可变的布局。具体的布局样式的定义其实都在另一个目录partials下，partials的加载就无所谓顺序了，针对各页面的组成做相应的细节定义，比如header，footer等。</p>
+
+<p>在开始我自己的theme之前，我需要一些灵感，可以在<a href="http://opthemes.com/">这里</a>获得。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ruby vs python]]></title>
@@ -513,6 +566,24 @@ login shell会执行下列文件：</p>
 </span><span class='line'>git commit -m "source commit"
 </span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
 
+
+<h3>美化</h3>
+
+<p>如果喜欢某个样式，可以使用git submodule来安装：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git submodule add git://github.com/octopress-themes/xxx.git .themes/xxx
+</span><span class='line'>rake install['xxx']</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样做的好处是，可以随时更新theme</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd .themes/xxx
+</span><span class='line'>git pull origin master</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
@@ -574,7 +645,23 @@ login shell会执行下列文件：</p>
 </span><span class='line'>git reset --hard</span></code></pre></td></tr></table></div></figure>
 
 
+<p>比较，下面三条依次用最新版本，上次版本，上上次版本和本地进行比较</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git diff 
+</span><span class='line'>git diff HEAD^
+</span><span class='line'>git diff HEAD~2</span></code></pre></td></tr></table></div></figure>
+
+
 <h4>远程服务器</h4>
+
+<p>添加远程服务器</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote add origin url</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>其它</h3>
 ]]></content>

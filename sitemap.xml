@@ -2,74 +2,78 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://born729.github.com/blog/2012/01/05/git-notes/</loc>
-        <lastmod>2012-06-10T10:56:52+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/01/07/rails-on-osx/</loc>
-        <lastmod>2012-06-22T08:05:06+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/04/10/octopress/</loc>
-        <lastmod>2012-06-10T10:56:52+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/04/28/rails-host-vps/</loc>
-        <lastmod>2012-06-10T10:56:52+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/05/11/multiple-github-accounts/</loc>
-        <lastmod>2012-06-22T08:09:21+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/05/22/remote-textmate/</loc>
-        <lastmod>2012-06-10T10:56:52+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/05/27/rails-bootup/</loc>
-        <lastmod>2012-06-22T08:03:16+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/06/24/cocoa-gdb/</loc>
-        <lastmod>2012-06-24T14:42:28+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/07/22/bash-on-osx/</loc>
-        <lastmod>2012-07-22T17:56:37+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/10/09/python-xml/</loc>
-        <lastmod>2012-12-01T20:30:53+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/12/01/meteor/</loc>
-        <lastmod>2012-12-23T22:40:02+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2012/12/16/sublime/</loc>
-        <lastmod>2012-12-23T22:44:05+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2013/05/24/cron-rvm-ruby/</loc>
-        <lastmod>2013-05-24T21:06:35+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/2013/05/29/ruby-vs-python/</loc>
-        <lastmod>2013-05-29T23:50:49+08:00</lastmod>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
-        <loc>http://born729.github.com/51beidanci/</loc>
-        <lastmod>2012-06-10T11:13:17+08:00</lastmod>
+        <loc>http://born729.github.com/blog/2013/06/02/octopress-theme/</loc>
+        <lastmod>2013-06-04T22:17:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/404.html</loc>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/blog/archives/</loc>
-        <lastmod>2013-05-29T23:50:49+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://born729.github.com/blog/</loc>
-        <lastmod>2013-05-29T23:50:49+08:00</lastmod>
+        <lastmod>2013-06-04T22:17:45+08:00</lastmod>
     </url>
     <url>
         <loc>http://born729.github.com/</loc>
-        <lastmod>2013-05-30T23:25:01+08:00</lastmod>
+        <lastmod>2013-06-04T22:17:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://born729.github.com/robots.txt</loc>
+        <lastmod>2013-06-02T18:46:07+08:00</lastmod>
     </url>
 </urlset>

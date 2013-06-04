@@ -5,13 +5,24 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python XML - Born729</title>
+  <title>octopress-theme - Born729</title>
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Python的html/xml解析工具有很多 ElementTree
-BeautifulSoup
-lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三方库 简单的xpath支持 BeautifulSoup &hellip;">
+  <meta name="description" content="octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+@import "compass";
+@include global-reset;
+@include &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +31,7 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://born729.github.com/blog/2012/10/09/python-xml">
+  <link rel="canonical" href="http://born729.github.com/blog/2013/06/02/octopress-theme">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Born729" type="application/atom+xml">
@@ -68,7 +79,7 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
   <header>
     
-      <h1 class="entry-title">Python XML</h1>
+      <h1 class="entry-title">Octopress-theme</h1>
     
     
       <p class="meta">
@@ -84,38 +95,58 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
 
 
-<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2013-06-02T06:55:00+08:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Python的html/xml解析工具有很多</p>
+<div class="entry-content"><p>octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件：</p>
 
-<ul>
-<li>ElementTree</li>
-<li>BeautifulSoup</li>
-<li>lxml</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@import "compass";
+</span><span class='line'>@include global-reset;
+</span><span class='line'>@include reset-html5;
+</span><span class='line'>
+</span><span class='line'>@import "custom/colors";
+</span><span class='line'>@import "custom/fonts";
+</span><span class='line'>@import "custom/layout";
+</span><span class='line'>@import "base";
+</span><span class='line'>@import "partials";
+</span><span class='line'>@import "plugins/**/*";
+</span><span class='line'>@import "custom/styles";</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>ElementTree</h3>
+<p>可见几个目录的分工，custom用于在theme的基础上做用户定义，plugins是插件，基本的theme定义放在base和parials下。将custom分为两部分，一部分在base前，一部分放在最后是有讲究的，放在base之前的都是一些sass变量定义，因为sass在变量定义的时候支持前面的定义覆盖后面的定义（使用sass的!default来实现），所以这部分变量定义的部分要必须在前面。最后的custome/styles定义的一些样式，按照css的规格，后定义的样式覆盖前面的样式，所以这部分又必须放在后面了。</p>
 
-<p>ElementTree是Python内置的XML解析工具因此无需第三方库</p>
+<p>一般来说custom和plugins部分的内容都是空的，所以主要的theme定义就是在base和partials两个子目录下。base的加载顺序是这样的：</p>
 
-<ul>
-<li>简单的xpath支持</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@import "base/utilities";
+</span><span class='line'>@import "base/solarized";
+</span><span class='line'>@import "base/theme";
+</span><span class='line'>@import "base/typography";
+</span><span class='line'>@import "base/layout";</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>BeautifulSoup</h3>
+<p>显然，从命名上大致可以看出，utilities部分是一些公共函数。solarized定义一些颜色，theme是一些可调整变量，typography定义字体，最后的layout有点奇怪，他准确的说是整体布局，通过media query定义了一些全局并且可变的布局。具体的布局样式的定义其实都在另一个目录partials下，partials的加载就无所谓顺序了，针对各页面的组成做相应的细节定义，比如header，footer等。</p>
 
-<p>BeautifulSoup对html有很好的兼容性，不要求严格的xml，这对于网页解析比较方便。</p>
-
-<h3>lxml</h3>
-
-<p>使用C扩展的xml解析库，性能最佳。</p>
+<p>在开始我自己的theme之前，我需要一些灵感，可以在<a href="http://opthemes.com/">这里</a>获得。</p>
 </div>
 
 
@@ -138,14 +169,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
   
 
 
-<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2013-06-02T06:55:00+08:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/python/'>python</a>
-  
-</span>
 
 
     </p>
@@ -159,10 +184,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/07/22/bash-on-osx/" title="Previous Post: bash on osx">&laquo; bash on osx</a>
+        <a class="basic-alignment left" href="/blog/2013/05/29/ruby-vs-python/" title="Previous Post: ruby vs python">&laquo; ruby vs python</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/12/01/meteor/" title="Next Post: Meteor">Meteor &raquo;</a>
       
     </p>
   </footer>
@@ -256,8 +279,8 @@ lxml ElementTree ElementTree是Python内置的XML解析工具因此无需第三�
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://born729.github.com/blog/2012/10/09/python-xml/';
-        var disqus_url = 'http://born729.github.com/blog/2012/10/09/python-xml/';
+        var disqus_identifier = 'http://born729.github.com/blog/2013/06/02/octopress-theme/';
+        var disqus_url = 'http://born729.github.com/blog/2013/06/02/octopress-theme/';
         var disqus_script = 'embed.js';
       
     (function () {

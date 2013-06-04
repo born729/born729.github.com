@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Born729]]></title>
   <link href="http://born729.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2013-05-31T00:11:55+08:00</updated>
+  <updated>2013-06-04T22:19:36+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -49,9 +49,20 @@ git commit -m "comment"
 <code>
 git reset
 git reset --hard
+</code>
+比较，下面三条依次用最新版本，上次版本，上上次版本和本地进行比较
+<code>
+git diff
+git diff HEAD^
+git diff HEAD~2
 </code></p>
 
 <h4>远程服务器</h4>
+
+<p>添加远程服务器
+<code>
+git remote add origin url
+</code></p>
 
 <h3>其它</h3>
 ]]></content>
