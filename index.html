@@ -9,20 +9,12 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件： 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-@import "compass";
-@include global-reset;
-@include &hellip;">
+  <meta name="description" content="2013 octopress-theme
+Jun 02 2013 ruby vs python
+May 29 2013 用cron执行ruby脚本
+May 24 2013 2012 Sublime Text 2
+Dec 16 2012 posted in tools Meteor
+Dec 01 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,682 +59,235 @@
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/">Born729</a></li>
+  <!-- <li><a href="/blog/archives">Archives</a></li> -->
 </ul>
 
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/02/octopress-theme/">Octopress-theme</a></h1>
-    
-    
-      <p class="meta">
-        
+  <img class="left" src="/images/main-bg.jpg">
 
-
-
-
-
+<div id="blog-archives">
 
 
 
   
+  <h2>2013</h2>
 
-
-<time datetime="2013-06-02T06:55:00+08:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>@import "compass";
-</span><span class='line'>@include global-reset;
-</span><span class='line'>@include reset-html5;
-</span><span class='line'>
-</span><span class='line'>@import "custom/colors";
-</span><span class='line'>@import "custom/fonts";
-</span><span class='line'>@import "custom/layout";
-</span><span class='line'>@import "base";
-</span><span class='line'>@import "partials";
-</span><span class='line'>@import "plugins/**/*";
-</span><span class='line'>@import "custom/styles";</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可见几个目录的分工，custom用于在theme的基础上做用户定义，plugins是插件，基本的theme定义放在base和parials下。将custom分为两部分，一部分在base前，一部分放在最后是有讲究的，放在base之前的都是一些sass变量定义，因为sass在变量定义的时候支持前面的定义覆盖后面的定义（使用sass的!default来实现），所以这部分变量定义的部分要必须在前面。最后的custome/styles定义的一些样式，按照css的规格，后定义的样式覆盖前面的样式，所以这部分又必须放在后面了。</p>
-
-<p>一般来说custom和plugins部分的内容都是空的，所以主要的theme定义就是在base和partials两个子目录下。base的加载顺序是这样的：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>@import "base/utilities";
-</span><span class='line'>@import "base/solarized";
-</span><span class='line'>@import "base/theme";
-</span><span class='line'>@import "base/typography";
-</span><span class='line'>@import "base/layout";</span></code></pre></td></tr></table></div></figure>
-
-
-<p>显然，从命名上大致可以看出，utilities部分是一些公共函数。solarized定义一些颜色，theme是一些可调整变量，typography定义字体，最后的layout有点奇怪，他准确的说是整体布局，通过media query定义了一些全局并且可变的布局。具体的布局样式的定义其实都在另一个目录partials下，partials的加载就无所谓顺序了，针对各页面的组成做相应的细节定义，比如header，footer等。</p>
-
-<p>在开始我自己的theme之前，我需要一些灵感，可以在<a href="http://opthemes.com/">这里</a>获得。</p>
-</div>
+<article>
   
+<h1><a href="/blog/2013/06/02/octopress-theme/">octopress-theme</a></h1>
+<time datetime="2013-06-02T06:55:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>02</span> <span class='year'>2013</span></time>
+
+
+</article>
+
+
+
+<article>
   
+<h1><a href="/blog/2013/05/29/ruby-vs-python/">ruby vs python</a></h1>
+<time datetime="2013-05-29T23:35:00+08:00" pubdate><span class='month'>May</span> <span class='day'>29</span> <span class='year'>2013</span></time>
 
 
-    </article>
+</article>
+
+
+
+<article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/29/ruby-vs-python/">Ruby vs Python</a></h1>
-    
-    
-      <p class="meta">
-        
+<h1><a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a></h1>
+<time datetime="2013-05-24T20:46:00+08:00" pubdate><span class='month'>May</span> <span class='day'>24</span> <span class='year'>2013</span></time>
 
 
-
-
-
+</article>
 
 
 
   
+  <h2>2012</h2>
 
-
-<time datetime="2013-05-29T23:35:00+08:00" pubdate data-updated="true">May 29<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby和Python是我最常用的两门脚本语言，他们两个都足够通用，不像PHP和Javascript那么局限，所以很有必要从使用者的角度，给他们两个做一个比较。</p>
-
-<h3>语法</h3>
-
-<p>语法上，我更喜欢Ruby，Python的特殊缩进是很多程序员比较难接受的一点，仅仅是空格的排版就决定语法逻辑，我很不喜欢，况且还有一个Tab在捣乱，每次拿到一个新编辑器写Python代码，都要去设置空格替换Tab，否则简直没法工作。所以Ruby胜在符合常规。</p>
-
-<h3>性能</h3>
-
-<p>当前来看，解释器性能上，毫无疑问应该是Python占优，我用过Ruby 1.9.2，曾经遇到过因为Require嵌套比较多，导致脚本启动特别慢的问题，换到1.9.3版本才稍稍正常些，但感觉还是比不上Python的性能。</p>
-
-<h3>扩展包</h3>
-
-<p>Ruby自然是用gem来管理扩展包，如果包之间依赖关系复杂，还可以使用bundle来维护这个依赖关系。Python里的easy_install应该是gem的等价物，但bundle就没有合适的等价物了。</p>
-</div>
+<article>
   
+<h1><a href="/blog/2012/12/16/sublime/">Sublime Text 2</a></h1>
+<time datetime="2012-12-16T00:00:00+08:00" pubdate><span class='month'>Dec</span> <span class='day'>16</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/tools/'>tools</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
   
+<h1><a href="/blog/2012/12/01/meteor/">Meteor</a></h1>
+<time datetime="2012-12-01T00:00:00+08:00" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/web/'>web</a></span>
+</footer>
 
 
-    </article>
+</article>
+
+
+
+<article>
   
+<h1><a href="/blog/2012/10/09/python-xml/">Python XML</a></h1>
+<time datetime="2012-10-09T00:00:00+08:00" pubdate><span class='month'>Oct</span> <span class='day'>09</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>python</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/24/cron-rvm-ruby/">用cron执行ruby脚本</a></h1>
-    
-    
-      <p class="meta">
-        
+<h1><a href="/blog/2012/07/22/bash-on-osx/">bash on osx</a></h1>
+<time datetime="2012-07-22T00:00:00+08:00" pubdate><span class='month'>Jul</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/osx/'>osx</a></span>
+</footer>
+
+
+</article>
 
 
 
-
-
-
-
-
+<article>
   
+<h1><a href="/blog/2012/06/24/cocoa-gdb/">Cocoa debug</a></h1>
+<time datetime="2012-06-24T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>24</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/rails/'>rails</a></span>
+</footer>
 
 
-<time datetime="2013-05-24T20:46:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
+</article>
 
 
-  <div class="entry-content"><p>在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
-
-
-<p>我的本意很简单，每8小时运行一次test.rb，从/var/log/syslog来看，cron已经正确调度了，可是看起来test.rb没有被执行，因为syslog中没有记录test.rb的标准输出，所以我修改了crontab为：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * ruby /home/myname/test.rb &gt;&gt; /home/myname/cron.log 2&gt;&1</span></code></pre></td></tr></table></div></figure>
-
-
-<p>后面的2>&amp;1是为了将标准错误输出和标准输出都记录，通过cron.log，我看到是因为ruby命令没有找到，我随之理解了，ruby是用RVM安装的，因此ruby的整个执行环境依赖于当前用户的shell，但cron在执行脚本时，环境是一个全新的shell，自然连ruby都不能找到了，对于这个问题，google上有很多解决方法，比如在crontab中增加环境变量，比如在执行test.rb前先执行RVM的初始化脚本，但是我觉得都不够优雅，多次尝试之后，最终的解决方案是：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l /home/myname/test.sh</span></code></pre></td></tr></table></div></figure>
-
-
-<p>而test.sh的内容很简单，就是</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行不想要额外增加一个shell脚本的解决方法是：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>0 */8 * * * bash -l -c /home/myname/test.rb</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可惜在我的环境下，没有成功，可能-c这个参数我还没有参透吧。</p>
-</div>
+<article>
   
+<h1><a href="/blog/2012/05/27/rails-bootup/">Rails向导</a></h1>
+<time datetime="2012-05-27T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>27</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/rails/'>rails</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
   
+<h1><a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a></h1>
+<time datetime="2012-05-22T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/osx/'>osx</a></span>
+</footer>
 
 
-    </article>
+</article>
+
+
+
+<article>
   
+<h1><a href="/blog/2012/05/11/multiple-github-accounts/">多Github帐号</a></h1>
+<time datetime="2012-05-11T20:26:00+08:00" pubdate><span class='month'>May</span> <span class='day'>11</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/life/'>life</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/16/sublime/">Sublime Text 2</a></h1>
-    
-    
-      <p class="meta">
-        
+<h1><a href="/blog/2012/04/28/rails-host-vps/">Rails在VPS的部署</a></h1>
+<time datetime="2012-04-28T00:00:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>28</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/osx/'>osx</a></span>
+</footer>
+
+
+</article>
 
 
 
-
-
-
-
-
+<article>
   
+<h1><a href="/blog/2012/04/10/octopress/">Octopress</a></h1>
+<time datetime="2012-04-10T13:01:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>10</span> <span class='year'>2012</span></time>
 
 
-<time datetime="2012-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+</article>
 
 
-  <div class="entry-content"><p>Sublime Text 2，OSX下最好的程序员编辑器：</p>
 
-<h3>支持coffeescript</h3>
+<article>
+  
+<h1><a href="/blog/2012/01/07/rails-on-osx/">Rails cheat sheet</a></h1>
+<time datetime="2012-01-07T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>07</span> <span class='year'>2012</span></time>
 
-<p>Sublime Text 2支持Textmate bundle，所以很简单了：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/Library/Application Support/Sublime Text 2/Packages
-</span><span class='line'>git clone git://github.com/jashkenas/coffee-script-tmbundle CoffeeScript</span></code></pre></td></tr></table></div></figure>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/rails/'>rails</a></span>
+</footer>
 
 
-<p>重启Sublime就好了。</p>
+</article>
 
-<h3>修改Tab大小</h3>
 
-<p>选择菜单 Preferences 》Setting more 》Syntax specific，输入以下配置：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "tab_size": 2
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<article>
+  
+<h1><a href="/blog/2012/01/05/git-notes/">Git笔记</a></h1>
+<time datetime="2012-01-05T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>05</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/git/'>git</a></span>
+</footer>
+
+
+</article>
 
 </div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/01/meteor/">Meteor</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
 
   
-
-
-<time datetime="2012-12-01T00:00:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Meteor，很新的一个Web开发框架，代表了下一代的Web开发框架的方向。</p>
-
-<h3>架构</h3>
-
-<h3>DOM处理</h3>
-
-<p>Meteor下，DOM是靠JS render出来的，因此DOM始终是处于动态变化过程中的，这给很多DOM处理带来的额外的复杂性，比如需要初始化一些JS控件，就不能只在Meteor.startup中做，而应该在Meteor的template render后来做，比如：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Template.header.rendered = -&gt;
-</span><span class='line'>  $('[data-role="dropdown"]').each -&gt;
-</span><span class='line'>    $(this).Dropdown()</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样的话可以解决DOM的问题，但是紧接的问题就是如何防止因为多次回调导致一些事件被重复bind，jquery的事件是串接bind的，可以这样解决：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>selector.unbind("click");
-</span><span class='line'>selector.on("click",...);</span></code></pre></td></tr></table></div></figure>
-
+</article>
 
 
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/09/python-xml/">Python XML</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-09T00:00:00+08:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Python的html/xml解析工具有很多</p>
-
-<ul>
-<li>ElementTree</li>
-<li>BeautifulSoup</li>
-<li>lxml</li>
-</ul>
-
-
-<h3>ElementTree</h3>
-
-<p>ElementTree是Python内置的XML解析工具因此无需第三方库</p>
-
-<ul>
-<li>简单的xpath支持</li>
-</ul>
-
-
-<h3>BeautifulSoup</h3>
-
-<p>BeautifulSoup对html有很好的兼容性，不要求严格的xml，这对于网页解析比较方便。</p>
-
-<h3>lxml</h3>
-
-<p>使用C扩展的xml解析库，性能最佳。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/22/bash-on-osx/">Bash on Osx</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-22T00:00:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>bash在运行的时候分两种情况，login shell和非login shell。
-login shell会执行下列文件：</p>
-
-<ul>
-<li>/etc/profile</li>
-<li>~/.bash_profile</li>
-<li>~/.bash_login(没有.bash_profile的情况下运行)</li>
-<li>~/.profile(没有.bash_login的情况下运行)</li>
-</ul>
-
-
-<p>非login shell则是 ~/.bashrc, osx和Linux不一样的是，每次运行Terminal，都是login shell，所以osx下一个常见问题就是.bashrc的设置不起作用，所以，可以在bash_profile下增加这样一行:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[ -r ~/.bashrc ] && source ~/.bashrc</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样，.bashrc中的设置就在osx下也可以起作用了。</p>
-
-<p>顺便，如果切换shell的话，可以用</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo chsh -s /bin/zsh username</span></code></pre></td></tr></table></div></figure>
-
-
-<p>临时切换shell，可以用</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>exec bash</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/24/cocoa-gdb/">Cocoa Debug</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-24T00:00:00+08:00" pubdate data-updated="true">Jun 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>F-Script 注入</h3>
-
-<p>事先将FScript.framework拷贝到/Library/Frameworks，然后使用gdb</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>attach xxx
-</span><span class='line'>p (char)[[NSBundle bundleWithPath:@"/Library/Frameworks/FScript.framework"] load]
-</span><span class='line'>p (void)[FScriptMenuItem insertInMainMenu]
-</span><span class='line'>continue</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>F-Script console</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>keyWindow := NSApplication sharedApplication keyWindow.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后就可以做很多事情了</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/27/rails-bootup/">Rails向导</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-27T00:00:00+08:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>RVM</h3>
-
-<p>ruby的包管理器叫做gem，有些类似Linux的apt-get，leopard下已经预装gem，不过版本号实在不敢恭维:1.0.1，一个让人不太信任的数字，所以第一步就是刷新gem，不过对于系统已经安装的ruby和gem，替换不太好，幸好有rvm这个极好的工具，可以让你在个人的目录下管理ruby和gems。安装的方法就是下面的一条bash命令。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>bash &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面是安装了rvm到你的个人目录下，要使用rvm，还需要设置bash的初始化文件，同样的，一条命令：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
-
-
-<p>别忘了重新登录，以生效上面的profile。</p>
-
-<h3>Ruby和Rails</h3>
-
-<p>有了rvm，可以很方便的安装ruby了，如下：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 1.9.3
-</span><span class='line'>socksify_ruby localhost 8888 `which gem` install rails</span></code></pre></td></tr></table></div></figure>
-
-
-<p>理论上直接 gem install rails就可以了，不过因为一个你能懂的原因，我发现先装好socksify_ruby这个gem要好很多.</p>
-
-<p>大部分书上介绍rails的第一条命令是：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rails new project</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>集成Capistrano</h3>
-
-<p>Capistrano是很好的部署方法，如果需要自己部署的话，建议使用Capistrano，首先要生成Capistrano的配置文件：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>capify .</span></code></pre></td></tr></table></div></figure>
-
-
-<p>生产的deploy.rb，我们要做一些配置.</p>
-
-<h3>application.rb</h3>
-
-<p>这个文件中，有一些全局的应用程序设置，很多情况下需要修改的是时区，默认为UTC</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>config.time_zone = 'Beijing'</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>database.yml</h3>
-
-<p>配置数据库，大部分情况下，我们喜欢postgresql，所以：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>production:
-</span><span class='line'>  adapter: postgresql
-</span><span class='line'>  encoding: unicode
-</span><span class='line'>  database: name
-</span><span class='line'>  pool: 5
-</span><span class='line'>  username: user
-</span><span class='line'>  password: pass</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上面是设置的生产环境，开发环境我们有时会直接使用sqlite，sqlite和postgresql的兼容性很好，当然有时也会直接使用postgresql，那么就同时需要修改配置文件中的development段落的相关设置。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-22T00:00:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>textmate用起来很方便，在连上ssh时，自然也希望能够使用textmate，方法很多，列举几个：</p>
-
-<h3>sftp客户端</h3>
-
-<p>使用支持sftp的客户端，比如Cyberduck，连上ssh之后，配置文本编辑器为textmate，自然就可以直接编辑了，这种方法的好处简单且比较稳定，但是不适合编辑一个目录。</p>
-
-<h3>sshfs文件系统</h3>
-
-<p>将ssh映射为本地文件系统，可以用<a href="http://code.google.com/p/macfuse/">macfuse</a>，这种方法可能存在一定的稳定性问题，但允许编辑整个目录。</p>
-
-<h3>textmate插件</h3>
-
-<p>比如<a href="http://david.olrik.dk/projects/textmate-remote-sync-bundle/">这个</a>插件，当然只能对textmate有效。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/born729">@born729</a> on GitHub
@@ -798,6 +343,7 @@ login shell会执行下列文件：</p>
 
   
 </aside>
+
 
     </div>
   </div>
