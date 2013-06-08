@@ -15,6 +15,7 @@ body {
 	padding-right: 0.5em;
 
 	> header {
+	    display: none; 
 		background: $white;
 		padding-left: 0px;
 		padding-right: 0px;	
@@ -29,8 +30,7 @@ body {
 
 	> nav {
 		background: $white;
-		border-bottom: 3px double #F2F2F2;
-		border-top: 3px double #F2F2F2;
+		border-bottom: 3px double #505050;
 		padding-left: 0px;
 		padding-right: 0px;
 
@@ -180,6 +180,11 @@ figure.code {
 	background: #212C3B !important;
 }
 
-aside {
-	display: none;
+aside.sidebar section {
+	width: 350px;
+	float: left;
+	h1,li {
+	   border: none;
+	}
+
 }
