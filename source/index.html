@@ -4,8 +4,6 @@ title:
 footer: false
 ---
 
-{% img left /images/main-bg.jpg %}
-
 <div id="blog-archives">
 {% for post in site.posts reverse %}
 {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
