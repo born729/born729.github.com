@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Born729]]></title>
+  <link href="http://born729.github.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://born729.github.com/"/>
+  <updated>2013-06-15T06:12:52+08:00</updated>
+  <id>http://born729.github.com/</id>
+  <author>
+    <name><![CDATA[born729]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ruby vs python]]></title>
+    <link href="http://born729.github.com/blog/2013/05/29/ruby-vs-python/"/>
+    <updated>2013-05-29T23:35:00+08:00</updated>
+    <id>http://born729.github.com/blog/2013/05/29/ruby-vs-python</id>
+    <content type="html"><![CDATA[<p>Ruby和Python是我最常用的两门脚本语言，他们两个都足够通用，不像PHP和Javascript那么局限，所以很有必要从使用者的角度，给他们两个做一个比较。</p>
+
+<h3>语法</h3>
+
+<p>语法上，我更喜欢Ruby，Python的特殊缩进是很多程序员比较难接受的一点，仅仅是空格的排版就决定语法逻辑，我很不喜欢，况且还有一个Tab在捣乱，每次拿到一个新编辑器写Python代码，都要去设置空格替换Tab，否则简直没法工作。所以Ruby胜在符合常规。</p>
+
+<h3>性能</h3>
+
+<p>当前来看，解释器性能上，毫无疑问应该是Python占优，我用过Ruby 1.9.2，曾经遇到过因为Require嵌套比较多，导致脚本启动特别慢的问题，换到1.9.3版本才稍稍正常些，但感觉还是比不上Python的性能。</p>
+
+<h3>扩展包</h3>
+
+<p>Ruby自然是用gem来管理扩展包，如果包之间依赖关系复杂，还可以使用bundle来维护这个依赖关系。Python里的easy_install应该是gem的等价物，但bundle就没有合适的等价物了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用cron执行ruby脚本]]></title>
+    <link href="http://born729.github.com/blog/2013/05/24/cron-rvm-ruby/"/>
+    <updated>2013-05-24T20:46:00+08:00</updated>
+    <id>http://born729.github.com/blog/2013/05/24/cron-rvm-ruby</id>
+    <content type="html"><![CDATA[<p>在Linux下cron是非常容易使用的自动化执行工具，类似windows的计划任务，cron的独特的定时设置方式，简洁而灵活，但在使用ruby脚本时却遇到了麻烦。 用crontab -e 添加了下面的脚本后：</p>
+
+<p><code>
+0 */8 * * * ruby /home/myname/test.rb
+</code></p>
+
+<p>我的本意很简单，每8小时运行一次test.rb，从/var/log/syslog来看，cron已经正确调度了，可是看起来test.rb没有被执行，因为syslog中没有记录test.rb的标准输出，所以我修改了crontab为：</p>
+
+<p><code>
+0 */8 * * * ruby /home/myname/test.rb &gt;&gt; /home/myname/cron.log 2&gt;&amp;1
+</code></p>
+
+<p>后面的2>&amp;1是为了将标准错误输出和标准输出都记录，通过cron.log，我看到是因为ruby命令没有找到，我随之理解了，ruby是用RVM安装的，因此ruby的整个执行环境依赖于当前用户的shell，但cron在执行脚本时，环境是一个全新的shell，自然连ruby都不能找到了，对于这个问题，google上有很多解决方法，比如在crontab中增加环境变量，比如在执行test.rb前先执行RVM的初始化脚本，但是我觉得都不够优雅，多次尝试之后，最终的解决方案是：</p>
+
+<p><code>
+0 */8 * * * bash -l /home/myname/test.sh
+</code></p>
+
+<p>而test.sh的内容很简单，就是</p>
+
+<p><code>
+ruby /home/myname/test.rb
+</code></p>
+
+<p>这个方法是利用了 bash 的-l 参数来重建一个shell环境，但是遗憾的是，这样的情况下不能直接执行ruby，而必须是一个shell脚本，所以额外单独写了一个test.sh。曾经看到一个我认为可行不想要额外增加一个shell脚本的解决方法是：</p>
+
+<p><code>
+0 */8 * * * bash -l -c /home/myname/test.rb
+</code></p>
+
+<p>可惜在我的环境下，没有成功，可能-c这个参数我还没有参透吧。</p>
+]]></content>
+  </entry>
+  
+</feed>

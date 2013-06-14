@@ -4,7 +4,7 @@
   <title><![CDATA[Born729]]></title>
   <link href="http://born729.github.com/atom.xml" rel="self"/>
   <link href="http://born729.github.com/"/>
-  <updated>2013-06-08T08:10:08+08:00</updated>
+  <updated>2013-06-15T06:12:52+08:00</updated>
   <id>http://born729.github.com/</id>
   <author>
     <name><![CDATA[born729]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[octopress-theme]]></title>
+    <title type="html"><![CDATA[octopress theme]]></title>
     <link href="http://born729.github.com/blog/2013/06/02/octopress-theme/"/>
     <updated>2013-06-02T06:55:00+08:00</updated>
     <id>http://born729.github.com/blog/2013/06/02/octopress-theme</id>
@@ -453,7 +453,7 @@ login shell会执行下列文件：</p>
   <entry>
     <title type="html"><![CDATA[Rails在VPS的部署]]></title>
     <link href="http://born729.github.com/blog/2012/04/28/rails-host-vps/"/>
-    <updated>2012-04-28T00:00:00+08:00</updated>
+    <updated>2012-04-28T20:26:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/04/28/rails-host-vps</id>
     <content type="html"><![CDATA[<p>这是我们在VPS的部署方案。</p>
 
@@ -590,7 +590,7 @@ login shell会执行下列文件：</p>
   <entry>
     <title type="html"><![CDATA[Rails cheat sheet]]></title>
     <link href="http://born729.github.com/blog/2012/01/07/rails-on-osx/"/>
-    <updated>2012-01-07T00:00:00+08:00</updated>
+    <updated>2012-01-07T20:26:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/01/07/rails-on-osx</id>
     <content type="html"><![CDATA[<h4>执行sql update语句</h4>
 
@@ -605,7 +605,7 @@ login shell会执行下列文件：</p>
   <entry>
     <title type="html"><![CDATA[Git笔记]]></title>
     <link href="http://born729.github.com/blog/2012/01/05/git-notes/"/>
-    <updated>2012-01-05T00:00:00+08:00</updated>
+    <updated>2012-01-05T20:26:00+08:00</updated>
     <id>http://born729.github.com/blog/2012/01/05/git-notes</id>
     <content type="html"><![CDATA[<p>一图胜千言</p>
 
