@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Born729</title>
+  <title>CSS position和display - Born729</title>
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="Page not found Sorry about that! Unfortunately the page you were looking for could not be found. It might have been removed, lost or never existed. &hellip;">
+  <meta name="description" content="CSS规范中position的定义可以取四种值，并且又和其他属性，比如display，LRTB(left,right,top,bottom的缩写)相关，所以不容易理解清楚，下面是我的解释： position static - 默认值，对象遵循HTML定位规则,此时LRTB无效。
+relative &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://born729.github.com/404.html">
+  <link rel="canonical" href="http://born729.github.com/blog/2013/06/19/css-position">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Born729" type="application/atom+xml">
@@ -61,48 +62,106 @@
 </nav>
   <div id="main">
     <div id="content">
-        
-    <br/><img src="/images/main-bg.jpg">
+      <div>
+<article class="hentry" role="article">
   
-
-<div>
-<article role="article">
-
   <header>
-  <h1 class="entry-title">Page not found</h1>
-  <p class="meta">Sorry about that!</p>
-</header>
-
-<p>
-  Unfortunately the page you were looking for could not be found. It might have
-  been removed, lost or never existed. You could try and find it using the
-  <script>
-    var arrURL = document.URL.split("/");
-    var arrParams = arrURL[3].split("?");
-    var searchParam = arrParams[0].substr(0, arrParams[0].lastIndexOf("."));
     
-    document.write('<a href="http://google.com/search?q=site:born729.github.com ' + searchParam + '">search</a>')
-  </script>
-  <noscript><a href="http://google.com/search?q=site%3Aborn729.github.com">search</a></noscript>
-  box (top right corner), browse the
-  <a href="/blog/archives">archives</a> or go to the
-  <a href="/">frontpage</a>.
-</p>
+      <h1 class="entry-title">CSS Position和display</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
 
   
-    <footer>
+
+
+<time datetime="2013-06-19T07:00:00+08:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>CSS规范中position的定义可以取四种值，并且又和其他属性，比如display，LRTB(left,right,top,bottom的缩写)相关，所以不容易理解清楚，下面是我的解释：</p>
+
+<h1>position</h1>
+
+<ul>
+<li><p>static - 默认值，对象遵循HTML定位规则,此时LRTB无效。</p></li>
+<li><p>relative - 对象将依据LRTB等属性在正常位置基础上偏移。</p></li>
+<li><p>absolute - 将对象从文档流中拖出，使用LRTB等属性相对于其最接近的一个有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据 body 对象。absolute定位时，margin失效。</p></li>
+<li><p>fixed - 类似absolute，但是却直接相对于浏览器窗口，与父无关。</p></li>
+</ul>
+
+
+<p>如果单从定义上看，这四种区别还比较模糊，尤其是relative和absolute是有点晕的，但结合应用场景，就很明确了，通常大部分元素都是static，如果想将某个元素脱离出来绝对定位，可以用absolute或者fixed，这时要看你希望相对的点，如果希望相对浏览器窗口固定，用fixed，如果希望相对父元素固定，用absolute。</p>
+
+<p>但是注意absolute所相对的这个父元素必须不是static，通常就指定一下relative就好了，因为relative本身不改变元素的位置（前提是没有通过LRTB偏移），CSS这样设计的用意很容易理解，可以灵活的控制absolute元素想相对的元素，比如，想相对父的父，只要父为static，而父的父指定一下relative就可以了。</p>
+
+<h1>display</h1>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
+  
+
+<span class="byline author vcard">Posted by <span class="fn">born729</span></span>
+
       
-        <div class="sharing">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-19T07:00:00+08:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css/'>css</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2013/06/02/octopress-theme/" title="Previous Post: octopress theme">&laquo; octopress theme</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 
 </div>
@@ -185,7 +244,10 @@
       var disqus_shortname = 'born729';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://born729.github.com/blog/2013/06/19/css-position/';
+        var disqus_url = 'http://born729.github.com/blog/2013/06/19/css-position/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

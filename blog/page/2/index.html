@@ -9,8 +9,7 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="如果有多Github帐号，想同时工作，ssh需要一番设置，才能工作正常。 创建多个key 首先必须要有多个key 1
-ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择不同的文件，比如id_rsa_aaa和id_rsa_bbb， &hellip;">
+  <meta name="description" content="textmate用起来很方便，在连上ssh时，自然也希望能够使用textmate，方法很多，列举几个： sftp客户端 使用支持sftp的客户端，比如Cyberduck，连上ssh之后，配置文本编辑器为textmate，自然就可以直接编辑了，这种方法的好处简单且比较稳定，但是不适合编辑一个目录。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -37,7 +36,7 @@ ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择�
 
 <body   class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
-  <h1><a href="/">Born729</a></h1>
+  <h1><a href="/">B</a></h1>
   
 </hgroup>
 
@@ -64,6 +63,54 @@ ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-22T00:00:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>textmate用起来很方便，在连上ssh时，自然也希望能够使用textmate，方法很多，列举几个：</p>
+
+<h3>sftp客户端</h3>
+
+<p>使用支持sftp的客户端，比如Cyberduck，连上ssh之后，配置文本编辑器为textmate，自然就可以直接编辑了，这种方法的好处简单且比较稳定，但是不适合编辑一个目录。</p>
+
+<h3>sshfs文件系统</h3>
+
+<p>将ssh映射为本地文件系统，可以用<a href="http://code.google.com/p/macfuse/">macfuse</a>，这种方法可能存在一定的稳定性问题，但允许编辑整个目录。</p>
+
+<h3>textmate插件</h3>
+
+<p>比如<a href="http://david.olrik.dk/projects/textmate-remote-sync-bundle/">这个</a>插件，当然只能对textmate有效。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -518,6 +565,10 @@ ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/06/19/css-position/">CSS position和display</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/02/octopress-theme/">octopress theme</a>
       </li>
     
@@ -531,10 +582,6 @@ ssh-keygen -t rsa -C "your-email-address" 保存的时候，每个key要选择�
     
       <li class="post">
         <a href="/blog/2012/12/16/sublime/">Sublime Text 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/01/meteor/">Meteor</a>
       </li>
     
   </ul>

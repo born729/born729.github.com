@@ -9,20 +9,8 @@
   <meta name="author" content="born729">
 
   
-  <meta name="description" content="octopress的theme一样体现了黑客风格，使用sass来做预编译。sass在这里物尽其用，使得修改theme更容易和一致。先看总体的文件： 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-@import "compass";
-@include global-reset;
-@include &hellip;">
+  <meta name="description" content="CSS规范中position的定义可以取四种值，并且又和其他属性，比如display，LRTB(left,right,top,bottom的缩写)相关，所以不容易理解清楚，下面是我的解释： position static - 默认值，对象遵循HTML定位规则,此时LRTB无效。
+relative &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -49,7 +37,7 @@
 
 <body   class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
-  <h1><a href="/">Born729</a></h1>
+  <h1><a href="/">B</a></h1>
   
 </hgroup>
 
@@ -76,6 +64,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/19/css-position/">CSS Position和display</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-19T07:00:00+08:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CSS规范中position的定义可以取四种值，并且又和其他属性，比如display，LRTB(left,right,top,bottom的缩写)相关，所以不容易理解清楚，下面是我的解释：</p>
+
+<h1>position</h1>
+
+<ul>
+<li><p>static - 默认值，对象遵循HTML定位规则,此时LRTB无效。</p></li>
+<li><p>relative - 对象将依据LRTB等属性在正常位置基础上偏移。</p></li>
+<li><p>absolute - 将对象从文档流中拖出，使用LRTB等属性相对于其最接近的一个有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据 body 对象。absolute定位时，margin失效。</p></li>
+<li><p>fixed - 类似absolute，但是却直接相对于浏览器窗口，与父无关。</p></li>
+</ul>
+
+
+<p>如果单从定义上看，这四种区别还比较模糊，尤其是relative和absolute是有点晕的，但结合应用场景，就很明确了，通常大部分元素都是static，如果想将某个元素脱离出来绝对定位，可以用absolute或者fixed，这时要看你希望相对的点，如果希望相对浏览器窗口固定，用fixed，如果希望相对父元素固定，用absolute。</p>
+
+<p>但是注意absolute所相对的这个父元素必须不是static，通常就指定一下relative就好了，因为relative本身不改变元素的位置（前提是没有通过LRTB偏移），CSS这样设计的用意很容易理解，可以灵活的控制absolute元素想相对的元素，比如，想相对父的父，只要父为static，而父的父指定一下relative就可以了。</p>
+
+<h1>display</h1>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -680,54 +720,6 @@ login shell会执行下列文件：</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/22/remote-textmate/">远程执行textmate</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-22T00:00:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>textmate用起来很方便，在连上ssh时，自然也希望能够使用textmate，方法很多，列举几个：</p>
-
-<h3>sftp客户端</h3>
-
-<p>使用支持sftp的客户端，比如Cyberduck，连上ssh之后，配置文本编辑器为textmate，自然就可以直接编辑了，这种方法的好处简单且比较稳定，但是不适合编辑一个目录。</p>
-
-<h3>sshfs文件系统</h3>
-
-<p>将ssh映射为本地文件系统，可以用<a href="http://code.google.com/p/macfuse/">macfuse</a>，这种方法可能存在一定的稳定性问题，但允许编辑整个目录。</p>
-
-<h3>textmate插件</h3>
-
-<p>比如<a href="http://david.olrik.dk/projects/textmate-remote-sync-bundle/">这个</a>插件，当然只能对textmate有效。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -773,6 +765,10 @@ login shell会执行下列文件：</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/06/19/css-position/">CSS position和display</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/02/octopress-theme/">octopress theme</a>
       </li>
     
@@ -786,10 +782,6 @@ login shell会执行下列文件：</p>
     
       <li class="post">
         <a href="/blog/2012/12/16/sublime/">Sublime Text 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/01/meteor/">Meteor</a>
       </li>
     
   </ul>
