@@ -10,15 +10,17 @@ html {
 body {
 	font-family: $sans !important;
 	font-size: 1.125em;
-	max-width: 850px;
+	max-width: 800px;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 
 	> header {
-	    display: none; 
+		display: block;
+		position: fixed;
 		background: $white;
-		padding-left: 0px;
-		padding-right: 0px;	
+		top: 18px;
+		left: 0;
+		padding: 10px;
 
 		h1 {
 			a, a:visited, a:hover {
@@ -29,6 +31,7 @@ body {
 	}
 
 	> nav {
+	 	display: none;
 		background: $white;
 		border-bottom: 3px double #505050;
 		padding-left: 0px;
@@ -97,7 +100,7 @@ body {
 }
 
 article {
-	padding-top: 2em;
+	padding-top: 0;
 
 	.entry-content {
 		h3 {
@@ -180,11 +183,13 @@ figure.code {
 	background: #212C3B !important;
 }
 
-aside.sidebar section {
-	width: 350px;
-	float: left;
-	h1,li {
-	   border: none;
+aside.sidebar {
+	display: none;
+	section {
+		width: 350px;
+		float: left;
+		h1,li {
+		   border: none;
+		}
 	}
-
 }

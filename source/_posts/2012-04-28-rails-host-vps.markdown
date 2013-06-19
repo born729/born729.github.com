@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rails在VPS的部署
+date: 2012-04-28 20:26
 comments: true
 categories: osx
 ---

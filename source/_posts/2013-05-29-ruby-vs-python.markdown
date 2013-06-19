@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "ruby vs python"
+title: ruby vs python
 date: 2013-05-29 23:35
 comments: true
-categories: 
+categories: ruby
 ---
 
 Ruby和Python是我最常用的两门脚本语言，他们两个都足够通用，不像PHP和Javascript那么局限，所以很有必要从使用者的角度，给他们两个做一个比较。
