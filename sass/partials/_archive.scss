@@ -9,7 +9,7 @@
     &:last-child {
       background: none;
     }
-    footer { padding: 0; margin: 0;}
+    footer { padding: 0; margin: 0; float:right;}
   }
   h1 { color: $text-color; margin-bottom: .3em; }
   h2 { display: none; }
@@ -43,7 +43,8 @@
       margin-bottom: .3em;
       font-weight: normal;
       display: inline-block;
-      position: relative; top: -1px;
+      position: relative; 
+      top: -1px;
       float: left;
       &:first-child { padding-top: .75em; }
     }
