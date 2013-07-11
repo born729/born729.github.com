@@ -25,11 +25,11 @@ img{max-width:100%;}
 
 aside.sidebar { display: none; }
 nav { display: none; }
-body > header { display: block; position: fixed; top: 18px; left: 18px;}
+body > header { position: fixed; top: 30px; left: 18px;}
 body > header a {color: #444;}
 body > header a:hover {text-decoration:none;}
 article {padding-top: 1em;}
-article > footer {display: none;}
+article footer {display: none;}
 article time {margin-right:2em;}
 figure.code .highlight .gutter {display: none;}
 figure.code .highlight {background: #eee;}
